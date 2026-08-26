@@ -1,11 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 
-interface User {
-  name: undefined;
-  age: number;
-  email: undefined;
-}
 
 @Component({
   selector: 'app-invalid-component',
@@ -15,16 +10,5 @@ interface User {
 })
 export class InvalidComponent 
 {
- @ViewChild ('userinfo') f! : NgForm;
-  user: User = 
-  {
-    name : undefined,
-    age : 0,
-    email : undefined
-  }
-
-  submitted()
-  {
-   console.log(this.f.value);
-  }
+ 
 }
