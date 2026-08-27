@@ -9,7 +9,7 @@ import { StockAvail } from './stock-avail/stock-avail';
 import { Buttons } from './buttons/buttons';
 import { FormsModule } from '@angular/forms';
 import { InvalidComponent } from './invalid-component/invalid-component';
-
+import { ViewAllBook } from './view-all-book/view-all-book';
 
 
 
@@ -24,7 +24,8 @@ import { InvalidComponent } from './invalid-component/invalid-component';
             StockAvail,
             FormsModule,
             Buttons,
-            InvalidComponent
+            InvalidComponent,
+            ViewAllBook
           ],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -39,6 +40,7 @@ export class App
   { name: '✏ UPDATE BOOK', path: '/update-book' },
   { name: '🗑 DELETE BOOK', path: '/delete-book' },
   { name: '🔍 SEARCH BOOK', path: '/search-book'},
+  { name: '📚 VIEW ALL BOOKS' , path: '/view-all-book'},
   { name: '📦 STOCK AVAILABILITY', path: '/stock-avail'}
  ]
 //Bilal

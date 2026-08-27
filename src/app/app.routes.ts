@@ -6,6 +6,7 @@ import { DeleteBook } from './delete-book/delete-book';
 import { StockAvail } from './stock-avail/stock-avail';
 import { SearchBook } from './search-book/search-book';
 import { InvalidComponent } from './invalid-component/invalid-component';
+import { ViewAllBook } from './view-all-book/view-all-book';
 
 export const routes: Routes = [
     { path : '' , redirectTo : 'home-book' , pathMatch : 'full' },
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path : 'delete-book' , component : DeleteBook },
     { path : 'search-book' , component : SearchBook },
     { path : 'stock-avail' , component : StockAvail },
+    { path : 'view-all-book' , component : ViewAllBook},
     { path : '**' , component : InvalidComponent}
 ];
