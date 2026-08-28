@@ -1,1 +1,94 @@
-<h1 class="text-xl">This Is Update</h1>
+<div class="text-md text-white">
+    <h1 class="text-center text-white text-2xl">✏️ UPDATE BOOK</h1>
+
+    <div >
+      <label>ENTER BOOK ID :</label>
+      <input type="number" min="1" name="fetch_id" #fetchid="ngModel" [(ngModel)]= "Book_Details.book_id" required 
+      class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
+      <button type="submit" class="ml-50 mt-3 bg-green-500 rounded-md p-3" (click)="fetchForm()">FETCH DETAILS</button>
+    </div>
+
+ @if(fetchid.dirty && fetchid.valid)
+ {
+    <form #update_book = "ngForm" (ngSubmit)="alert()" (ngSubmit)="update_book.resetForm()">
+     
+        <div>
+          <h1 class="text-center text-white text-2xl mt-5">✏️ UPDATE YOUR BOOK CAREFULLY!</h1>
+        </div> 
+        <br>
+
+         <div>
+          <label>ENTER BOOK NAME :</label>
+          <input type="text" name="book_name" #bookname="ngModel" [(ngModel)]="Book_Details.book_name" required
+          class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+          @if((bookname.dirty || update_book.submitted) && bookname.invalid)
+          {
+           <p class="text-red-500">This Field Is Required!</p>
+          }
+         </div>
+         <br>
+
+         <div>
+         <label>ENTER AUTHOR NAME :</label>
+         <input type="text" name="author_name" #authorname="ngModel" [(ngModel)]="Book_Details.author_name" required
+         class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+         @if((authorname.dirty || update_book.submitted) && authorname.invalid)
+         {
+         <p class="text-red-500">This Field Is Required!</p>
+         }
+         </div>
+         <br>
+
+         <div>
+          <label class="text-white p-3">ABOUT BOOK :</label>
+          <input name="about_book" #aboutbook="ngModel" [(ngModel)]="Book_Details.about_book" required
+          class="rounded-md border border-white p-3 mt-5 ml-10 bg-gray-800 text-white">       
+          @if((aboutbook.dirty || update_book.submitted) && aboutbook.invalid)
+         {
+         <p class="text-red-500">This Field Is Required!</p>
+         }
+         </div>
+         <br>
+
+         <div>
+         <label>PUBLISHED DATE :</label>
+         <input type="date" name="published_date" #published="ngModel" [(ngModel)]="Book_Details.published_date" required
+         class="rounded-md border border-white p-3  ml-10 bg-gray-800 text-white">
+         @if((published.dirty || update_book.submitted) && published.invalid)
+         {
+          <p class="text-red-500">This Field Is Required!</p>
+         }
+         </div>
+         <br>
+
+          <div>
+          <label>ENTER BOOK CATEGORY :</label>
+          <select name="category" #category="ngModel" [(ngModel)]="Book_Details.category" required
+          class="bg-gray-800 text-white p-3 ml-10 mt-7 rounded-md border border-white">
+          <option value="">--SELECT BOOK CATEGORY--</option>
+          <option value="ARTS">ARTS</option>
+          <option value="HISTORY">HISTORY</option>
+          <option value="PSYCHOLOGY">PSYCHOLOGY</option>
+          <option value="MONEY AND FINANCE">MONEY AND FINANCE</option>
+          <option value="ENGLISH LITERATURE AND POEMS">ENGLISH LITERATURE AND POEMS</option>
+          <option value="TECH AND SPACE">TECH AND SPACE</option>
+          <option value="LIFESTYLE AND WELLNESS">LIFESTYLE AND WELLNESS</option>
+          </select>
+          @if((category.dirty || update_book.submitted) && category.invalid)
+         {
+          <p class="text-red-500">This Field Is Required!</p>
+         }
+         </div>     
+         <br>
+
+         <button type="submit" [disabled]="update_book.invalid" 
+         [class]="update_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md'
+         :'bg-green-500 p-3 mt-5 mr-3 test-white rounded-md'">SUBMIT</button>
+
+          <button type="submit" class="bg-yellow-500 p-3 ml-3 mt-5 text-white rounded-md">RESET</button>
+
+    </form>
+     
+ }
+
+</div>

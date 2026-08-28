@@ -1,15 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-
-interface Book_Details
-{
-  book_id : number,
-  book_name : string,
-  author_name : string,
-  about_book : string,
-  published_date : string,
-  category : string
-}
+import { Book_Details } from '../../Model';
 
 @Component({
   selector: 'app-add-book',
@@ -18,11 +9,10 @@ interface Book_Details
   styleUrl: './add-book.css',
 })
 
-
 export class AddBook 
 {
 
-@ViewChild('book') book! : NgForm ;
+@ViewChild('add_book') add! : NgForm ;
 
 todayString = new Date().toISOString().split('T')[0];
 
@@ -38,7 +28,7 @@ Book_Details : Book_Details =
 
 submit()
 {
-  const setBook = this.book.value;
+  const setBook = this.add.value;
   localStorage.setItem("Book_Details",JSON.stringify(setBook));
   console.log(setBook);
 
