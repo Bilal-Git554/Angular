@@ -11,9 +11,10 @@ import { Book_Details } from '../../Model';
 })
 export class UpdateBook 
 {
-  @ViewChild ('update_form') update ! : NgForm;
+  @ViewChild ('update_book') update ! : NgForm;
 
   todayString = new Date().toISOString().split('T')[0];
+  showForm : boolean = false;
 
   Book_Details : Book_Details =
   {
@@ -25,21 +26,47 @@ export class UpdateBook
     category : ''
   }
 
-  alert()
-  {
-    console.log(this.update.value);
-  }
 
   fetchForm()
   {
+ 
    const getBookfromStorage = localStorage.getItem("Book_Details");
-   const parse = getBookfromStorage ? JSON.parse(getBookfromStorage) : null;
-   if(parse.book_id == this.Book_Details.book_id)
+   const parse : Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
+   
+   const findBook = parse.find(b => Number(b.book_id) === Number(this.Book_Details.book_id));
+
+   if(findBook)
    {
-    console.log(parse);
+    this.Book_Details = {...findBook};
+    this.showForm = true;
    }
-   else{
-    console.log("Not Found!");
+   else
+    {
+      this.showForm = false;
+      alert("Book Not Found!");
+    }
+   
+  }
+
+  updateValue()
+  {
+   const getBookfromStorage = localStorage.getItem("Book_Details");
+   const parse:Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
+   
+   const findBook = parse.findIndex(b => Number(b.book_id) === Number(this.Book_Details.book_id));
+   
+   if(findBook !== -1)
+   {
+     parse[findBook] = {...this.Book_Details};
+     
+     localStorage.setItem("Book_Details",JSON.stringify(parse));
+     alert("Updated Successfully!✅");
+
+     this.showForm = false;
+   }
+   else
+   {
+    alert("Updatation Unsuccessfull ❌");
    }
   }
 }

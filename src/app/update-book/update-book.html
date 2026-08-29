@@ -1,16 +1,23 @@
 <div class="text-md text-white">
     <h1 class="text-center text-white text-2xl">✏️ UPDATE BOOK</h1>
 
+    @if(!showForm)
+    {
     <div >
       <label>ENTER BOOK ID :</label>
       <input type="number" min="1" name="fetch_id" #fetchid="ngModel" [(ngModel)]= "Book_Details.book_id" required 
       class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
       <button type="submit" class="ml-50 mt-3 bg-green-500 rounded-md p-3" (click)="fetchForm()">FETCH DETAILS</button>
     </div>
+       @if(fetchid.dirty && !fetchid.valid)
+       {
+        <p class="text-red-500">This Field Is Required!</p>
+       }
+    }
 
- @if(fetchid.dirty && fetchid.valid)
- {
-    <form #update_book = "ngForm" (ngSubmit)="alert()" (ngSubmit)="update_book.resetForm()">
+     @if(showForm)
+     {
+      <form #update_book = "ngForm" (ngSubmit)="updateValue()">
      
         <div>
           <h1 class="text-center text-white text-2xl mt-5">✏️ UPDATE YOUR BOOK CAREFULLY!</h1>
@@ -85,10 +92,6 @@
          [class]="update_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md'
          :'bg-green-500 p-3 mt-5 mr-3 test-white rounded-md'">SUBMIT</button>
 
-          <button type="submit" class="bg-yellow-500 p-3 ml-3 mt-5 text-white rounded-md">RESET</button>
-
-    </form>
-     
- }
-
+      </form>
+    }
 </div>
