@@ -28,14 +28,15 @@ Book_Details : Book_Details =
 
 submit()
 {
-  const setBook = this.add.value;
-  localStorage.setItem("Book_Details",JSON.stringify(setBook));
-  console.log(setBook);
-
   const getBook = localStorage.getItem("Book_Details");
-  const parsing = getBook?JSON.parse(getBook):null;
-  console.log(parsing);
+  const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
+  
+  const setBook = this.add.value;
+  parsing.push(setBook);
 
+  localStorage.setItem("Book_Details",JSON.stringify(parsing));
+  console.log(parsing);
+  this.add.resetForm();
 }
 
 }

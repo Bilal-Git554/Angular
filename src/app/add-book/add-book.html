@@ -1,7 +1,7 @@
 <div class="text-md text-white">
     <h1 class="text-center text-white text-2xl">➕ ADD BOOKS</h1>
 
-    <form #add_book = "ngForm" (ngSubmit)="submit()" (ngSubmit)="add_book.resetForm()">
+    <form #add_book = "ngForm" (ngSubmit)="submit()">
      
       <div>
      <label>ENTER BOOK ID :</label>
@@ -81,8 +81,6 @@
 
      <button type="submit" [disabled]="add_book.invalid" 
      [class]="add_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md':'bg-green-500 p-3 mt-5 mr-3 text-white rounded-md'">SUBMIT</button>
-
-     <button type="submit" class="bg-yellow-500 p-3 ml-3 mt-5 test-white rounded-md">RESET</button>
 
     </form>
 </div>
