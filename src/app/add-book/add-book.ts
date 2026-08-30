@@ -14,7 +14,8 @@ export class AddBook
 
 @ViewChild('add_book') add! : NgForm ;
 
-todayString = new Date().toISOString().split('T')[0];
+ initialAdd : boolean = false ;
+ todayString = new Date().toISOString().split('T')[0];
 
 Book_Details : Book_Details =
 {
@@ -36,7 +37,19 @@ submit()
 
   localStorage.setItem("Book_Details",JSON.stringify(parsing));
   console.log(parsing);
+
+  alert("Book Added Successfully!✅")
   this.add.resetForm();
+  this.initialAdd = false ;
 }
 
+  resetInput()
+  {
+    this.add.resetForm();
+  }
+
+  addBook()
+  {
+    this.initialAdd = true ;
+  }
 }
