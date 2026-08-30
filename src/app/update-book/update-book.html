@@ -1,8 +1,9 @@
 <div class="text-md text-white">
-    <h1 class="text-center text-white text-2xl">✏️ UPDATE BOOK</h1>
 
     @if(!showForm)
     {
+      <h1 class="text-center text-white text-2xl">✏️ UPDATE BOOK</h1>
+
     <div >
       <label>ENTER BOOK ID :</label>
       <input type="number" min="1" name="fetch_id" #fetchid="ngModel" [(ngModel)]= "Book_Details.book_id" required 
@@ -93,7 +94,9 @@
          <button type="submit" [disabled]="update_book.invalid" 
          [class]="update_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md'
          :'bg-green-500 p-3 mt-5 mr-3 test-white rounded-md'">SUBMIT</button>
-
+         
+         <button type="button" class="bg-yellow-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="resetInput()">RESET</button>
+         <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="back()">BACK</button>
       </form>
     }
 </div>

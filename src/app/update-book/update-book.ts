@@ -61,12 +61,23 @@ export class UpdateBook
      
      localStorage.setItem("Book_Details",JSON.stringify(parse));
      alert("Updated Successfully!✅");
-
+     
      this.showForm = false;
    }
    else
    {
     alert("Updatation Unsuccessfull ❌");
    }
-  }
+ }
+
+ resetInput()
+ {
+  this.update.resetForm();
+ } 
+
+ back()
+ {
+  this.showForm = false ;
+ }
+
 }
