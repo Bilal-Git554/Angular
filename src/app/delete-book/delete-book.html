@@ -1,1 +1,59 @@
-<h1 class="text-xl">This Is Delete</h1>
+<div>
+
+ @if(!tableSwitch)
+ {
+    <h1 class="text-center text-white text-2xl">🗑️ DELETE BOOK</h1>
+
+  <div class="text-white">
+    <label>ENTER BOOK ID :</label>
+    <input type="number" min="1" #deleteid="ngModel" name="delete_id" [(ngModel)] = "Book_Details.book_id" required
+    class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
+    <button type="submit" class="bg-green-500 p-3 mt-5 ml-50 mr-3 text-white rounded-md" (click)="checkBook()">FIND BOOK</button>
+    @if(deleteid.dirty && !deleteid.valid)
+    {
+     <p class="text-red-500">This Field Is Required!</p>
+    }
+  </div>
+ }
+
+ @if(tableSwitch)
+ {
+  <div>
+
+       <div>
+          <h1 class="text-center text-white text-2xl mt-5">🗑️ DELETE YOUR BOOK CAREFULLY!</h1>
+        </div> 
+        <br>
+
+    <table class="w-full text-center text-white mt-5">
+
+      <thead class="bg-slate-700">
+      <tr>
+        <th class="border border-slate-600 p-3">ID</th>
+        <th class="border border-slate-600 p-3">NAME</th>
+        <th class="border border-slate-600 p-3">AUTHOR NAME</th>
+        <th class="border border-slate-600 p-3">ABOUT BOOK</th>
+        <th class="border border-slate-600 p-3">PUBLISHED DATE</th>
+        <th class="border border-slate-600 p-3">CATEGORY</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr class="hover:bg-slate-800">
+        <td class="border border-slate-600 p-3">{{Book_Details.book_id}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.book_name}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.author_name}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.about_book}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.published_date}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.category}}</td>
+      </tr>
+      </tbody>
+
+     </table>
+
+     <button type="submit" class="bg-red-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="deleteBook()">DELETE</button>
+     <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="back()">BACK</button>
+  </div>
+ }
+
+</div>
