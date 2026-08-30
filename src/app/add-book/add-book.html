@@ -6,7 +6,7 @@
       <div>
      <label>ENTER BOOK ID :</label>
      <input type="number" name="book_id" #bookid="ngModel" [(ngModel)]="Book_Details.book_id" required
-      min="1"  class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+      min="1"  class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((bookid.dirty || add_book.submitted) && bookid.invalid)
       {
         <p class="text-red-500">This Field Is Required!</p>
@@ -18,7 +18,7 @@
      <div>
      <label>ENTER BOOK NAME :</label>
      <input type="text" name="book_name" #bookname="ngModel" [(ngModel)]="Book_Details.book_name" required
-     class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+     class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((bookname.dirty || add_book.submitted) && bookname.invalid)
       {
         <p class="text-red-500">This Field Is Required!</p>
@@ -29,7 +29,7 @@
      <div>
      <label>ENTER AUTHOR NAME :</label>
      <input type="text" name="author_name" #authorname="ngModel" [(ngModel)]="Book_Details.author_name" required
-     class="rounded-md border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+     class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((authorname.dirty || add_book.submitted) && authorname.invalid)
       {
         <p class="text-red-500">This Field Is Required!</p>
@@ -40,7 +40,7 @@
      <div>
         <label class="text-white p-3">ABOUT BOOK :</label>
         <input name="about_book" #aboutbook="ngModel" [(ngModel)]="Book_Details.about_book" required
-          class="rounded-md border border-white p-3 mt-5 ml-10 bg-gray-800 text-white">       
+          class="rounded-md border border-white w-90 p-3 mt-5 ml-10 bg-gray-800 text-white">       
        @if((aboutbook.dirty || add_book.submitted) && aboutbook.invalid)
        {
         <p class="text-red-500">This Field Is Required!</p>
@@ -51,7 +51,7 @@
      <div>
      <label>PUBLISHED DATE :</label>
      <input type="date" name="published_date" #published="ngModel" [(ngModel)]="Book_Details.published_date" required
-     class="rounded-md border border-white p-3  ml-10 bg-gray-800 text-white">
+     class="rounded-md border border-white w-90 p-3  ml-10 bg-gray-800 text-white">
       @if((published.dirty || add_book.submitted) && published.invalid)
       {
         <p class="text-red-500">This Field Is Required!</p>
@@ -62,7 +62,7 @@
      <div>
         <label>ENTER BOOK CATEGORY :</label>
         <select name="category" #category="ngModel" [(ngModel)]="Book_Details.category" required
-        class="bg-gray-800 text-white p-3 ml-10 mt-7 rounded-md border border-white">
+        class="bg-gray-800 text-white w-90 p-3 ml-10 mt-7 rounded-md border border-white">
         <option value="">--SELECT BOOK CATEGORY--</option>
         <option value="ARTS">ARTS</option>
         <option value="HISTORY">HISTORY</option>
