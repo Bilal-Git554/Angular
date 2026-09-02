@@ -1,49 +1,57 @@
 <div class="text-white">
-    <div [formGroup] = "user">
-        <label for="name">Enter Your Name :</label>
-        <input type="text" [formControl] = "user.controls.name" class="border border-white ">
-        @let name = user.controls.name;
-        @if(name.errors && name.dirty)
+    <div [formGroup] = "Book_Details">
+         
+    @if(!search)
+    {
+        <h1 class="text-center text-white text-2xl">🔎 SEARCH BOOK</h1>
+        <label>ENTER BOOK ID :</label>
+        <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName="book_id">
+        <br>
+        <button type="submit" class="bg-green-500 p-3 mt-5 mr-3 ml-50 text-white rounded-md" (click)="searchBook()">SEARCH BOOK</button>                
+        @let book_id = Book_Details.controls.book_id;
+        @if(book_id.errors && book_id.dirty)
         {
-            @if(name.errors['required'])
+            @if(book_id.errors['required'])
             {
-             <p class="text-red-500">This Field Is Required!</p>
+                <p class="text-red-500">This Field Is Required!</p>
             }
-            
-            @if(name.errors['minlength'])
+            @if(book_id.errors['min'])
             {
-             <p class="text-red-500">Minimum Length Is 5!</p>
+                <p class="text-red-500">ID Must Be Greater Than 0!</p>
             }
-
-            @if(name.errors['maxlength'])
-            {
-             <p class="text-red-500">Maximum Length Is 30 Only!</p>
-            }
-
         }
+     }
         <br>
 
-        <label for="age">Enter Your Age :</label>
-        <input type="number" [formControl] = "user.controls.age" class="border border-white">
+        @if (search) 
+        {
+          <div>
+             <h1 class="text-center text-white text-2xl mt-5">🔍 SEARCH RESULTS</h1>
+          </div> 
 
-            <h1>Enter Your Address Deatils</h1>
-            <label for="door_no">Door No :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.door_no" class="border border-white">
-
-            <label for="street">Street :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.street_name" class="border border-white">
-
-            <label for="area">Area :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.area" class="border border-white">
-
-            <label for="city">City :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.city" class="border border-white">
-
-            <label for="state">State :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.state" class="border border-white">
-
-            <label for="country">Country :</label>
-            <input type="text" [formControl] = "user.controls.address.controls.country" class="border border-white">
-        <button (click) = "submit()" class="bg-green-500" [disabled]="!user.valid">Submit</button>
-    </div>
+          <table class="w-full text-white text-center mt-5">
+            <thead class="bg-slate-700">
+                <tr>
+                    <td class="border border-slate-600 p-3">Book ID</td>
+                    <td class="border border-slate-600 p-3">Book Name</td>
+                    <td class="border border-slate-600 p-3">Author Name</td>
+                    <td class="border border-slate-600 p-3">About Book</td>
+                    <td class="border border-slate-600 p-3">Published Date</td>
+                    <td class="border border-slate-600 p-3">Category</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hover:bg-slate-800">
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_id.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_name.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.author_name.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.about_book.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.published_date.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.category.value}}</td>
+                </tr>
+            </tbody>
+          </table>
+            <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="back()">BACK</button>
+        }
+        
 </div>
