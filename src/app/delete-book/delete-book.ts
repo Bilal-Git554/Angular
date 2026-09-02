@@ -65,6 +65,6 @@ export class DeleteBook
   back()
   {
     this.tableSwitch = false ;
-    alert("Back To Find The Book!");
+    this.Book_Details.book_id = 0 ;
   }
 }
