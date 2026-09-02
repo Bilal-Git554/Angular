@@ -8,7 +8,7 @@
       <label>ENTER BOOK ID :</label>
       <input type="number" min="1" name="fetch_id" #fetchid="ngModel" [(ngModel)]= "Book_Details.book_id" required 
       class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
-      <button type="submit" class="ml-50 mt-3 bg-green-500 rounded-md p-3" (click)="fetchForm()">FETCH DETAILS</button>
+      <button type="submit" class="ml-50 mt-5 bg-green-500 rounded-md p-3" (click)="fetchForm()">FETCH DETAILS</button>
       @if(fetchid.dirty && !fetchid.valid)
       {
         <p class="text-red-500">This Field Is Required!</p>

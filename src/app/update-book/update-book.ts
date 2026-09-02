@@ -78,6 +78,7 @@ export class UpdateBook
  back()
  {
   this.showForm = false ;
+  this.Book_Details.book_id = 0 ;
  }
 
 }
