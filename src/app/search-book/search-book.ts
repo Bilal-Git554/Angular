@@ -21,11 +21,7 @@ export class SearchBook
    
    search : boolean = false ;
 
-  submit()
-  {
-    console.log(this.Book_Details.value);
-  }
-
+   
   searchBook()
   {
     const getBook = localStorage.getItem("Book_Details");
