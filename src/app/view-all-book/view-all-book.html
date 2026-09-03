@@ -1,1 +1,31 @@
-<h1 class="text-xl">This Is View All Books</h1>
+<div>
+    <div>
+        <h1 class="text-center text-white text-2xl ">📚 AVAILABLE BOOKS</h1>
+    </div>
+
+    <table class="text-white w-full text-center mt-5">
+        <thead>
+            <tr class="bg-slate-700">
+                <th class="border border-slate-600 p-3">ID</th>
+                <th class="border border-slate-600 p-3">NAME</th>
+                <th class="border border-slate-600 p-3">AUTHOR NAME</th>
+                <th class="border border-slate-600 p-3">ABOUT BOOK</th>
+                <th class="border border-slate-600 p-3">PUBLISHED DATE</th>
+                <th class="border border-slate-600 p-3">CATEGORY</th>
+            </tr>
+        </thead>
+        <tbody>
+              @for (book of viewBook(); track $index)
+              { 
+               <tr class="hover:bg-slate-800">
+                    <td class="border border-slate-600 p-3">{{book.book_id}}</td>
+                    <td class="border border-slate-600 p-3">{{book.book_name}}</td>
+                    <td class="border border-slate-600 p-3">{{book.author_name}}</td>
+                    <td class="border border-slate-600 p-3">{{book.about_book}}</td>
+                    <td class="border border-slate-600 p-3">{{book.published_date}}</td>
+                    <td class="border border-slate-600 p-3">{{book.category}}</td>
+                </tr> 
+                }
+        </tbody>
+    </table>
+</div>
