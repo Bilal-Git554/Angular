@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { Book_Details } from '../../Model';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-search-book',
@@ -10,18 +11,20 @@ import { Book_Details } from '../../Model';
 })
 export class SearchBook 
 {
-    Book_Details = new FormGroup({
-    book_id : new FormControl(0,[Validators.required,Validators.min(1)]),
-    book_name : new FormControl('',Validators.required),
-    author_name : new FormControl('',Validators.required),
-    about_book : new FormControl('',Validators.required),
-    published_date : new FormControl('',Validators.required),
-    category : new FormControl('',Validators.required)
+   form = inject(FormBuilder);
+
+    Book_Details = this.form.group({
+    book_id : this.form.control(0,[Validators.required,Validators.min(1)]),
+    book_name : this.form.control('',Validators.required),
+    author_name : this.form.control('',Validators.required),
+    about_book : this.form.control('',Validators.required),
+    published_date : this.form.control('',Validators.required),
+    category : this.form.control('',Validators.required)
     });
    
    search : boolean = false ;
 
-   
+
   searchBook()
   {
     const getBook = localStorage.getItem("Book_Details");
