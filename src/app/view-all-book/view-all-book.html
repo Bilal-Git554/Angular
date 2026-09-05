@@ -2,8 +2,9 @@
     <div>
         <h1 class="text-center text-white text-2xl ">📚 AVAILABLE BOOKS</h1>
     </div>
-
-    <table class="text-white w-full text-center mt-5">
+     @if(service.add_book().length > 0)
+    {
+     <table class="text-white w-full text-center mt-5">
         <thead>
             <tr class="bg-slate-700">
                 <th class="border border-slate-600 p-3">ID</th>
@@ -15,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-              @for (book of viewBook(); track $index)
+              @for (book of service.add_book(); track $index)
               { 
                <tr class="hover:bg-slate-800">
                     <td class="border border-slate-600 p-3">{{book.book_id}}</td>
@@ -27,5 +28,10 @@
                 </tr> 
                 }
         </tbody>
-    </table>
+      </table>
+   }
+   @else 
+   {
+    <h1 class="text-center text-white text-2xl mt-5">No Books Available!</h1>
+   }
 </div>

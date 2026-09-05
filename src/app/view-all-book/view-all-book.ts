@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { Book_Details } from '../../Model';
-import { OnInit } from '@angular/core';
+import { OnInit, inject } from '@angular/core';
+import { Service } from '../Services/service';
 
 @Component({
   selector: 'app-view-all-book',
@@ -8,22 +9,21 @@ import { OnInit } from '@angular/core';
   templateUrl: './view-all-book.html',
   styleUrl: './view-all-book.css',
 })
-export class ViewAllBook implements OnInit
+export class ViewAllBook 
 {
-  viewBook = signal<Book_Details[]>([]);
-  
-  ngOnInit()
-  {
-    const getBook = localStorage.getItem("Book_Details");
-    const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [] ;
+  service = inject(Service);
 
-    if(parsing.length > 0)
-    {
-      this.viewBook.set(parsing);
-    }
-    else
-    {
-      alert("There Is No Books Available!❌");
-    }
-  }
+  // viewBook = signal<Book_Details[]>([]);
+  
+  // ngOnInit()
+  // {
+  //   const getBook = localStorage.getItem("Book_Details");
+  //   const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [] ;
+
+  //   if(parsing.length > 0)
+  //   {
+  //     this.viewBook.set(parsing);
+  //   }
+  // }
+   
 }

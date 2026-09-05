@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Book_Details } from '../../Model';
+import { Service } from '../Services/service';
 
 @Component({
   selector: 'app-add-book',
@@ -11,8 +12,9 @@ import { Book_Details } from '../../Model';
 
 export class AddBook 
 {
+  service = inject(Service);
 
-@ViewChild('add_book') add! : NgForm ;
+ @ViewChild('add_book') add! : NgForm ;
 
  initialAdd : boolean = false ;
  todayString = new Date().toISOString().split('T')[0];
@@ -29,17 +31,18 @@ Book_Details : Book_Details =
 
 submit()
 {
-  const getBook = localStorage.getItem("Book_Details");
-  const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
+  // const getBook = localStorage.getItem("Book_Details");
+  // const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
   
-  const setBook = this.add.value;
-  parsing.push(setBook);
+  // const setBook = this.add.value;
+  // parsing.push(setBook);
 
-  localStorage.setItem("Book_Details",JSON.stringify(parsing));
-  console.log(parsing);
+  // localStorage.setItem("Book_Details",JSON.stringify(parsing));
 
-  alert("Book Added Successfully!✅")
-  this.add.resetForm();
+  
+  this.service.dataInput(this.add.value);
+
+  this.resetInput();
   this.initialAdd = false ;
 }
 
