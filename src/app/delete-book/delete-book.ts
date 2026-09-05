@@ -57,8 +57,9 @@ export class DeleteBook
     localStorage.setItem("Book_Details",JSON.stringify(filter_book));
 
     alert("Book Deleted Successfully!🚮")
-    this.tableSwitch = false ;
-   }
+   
+    this.back();
+  }
 
   }
 

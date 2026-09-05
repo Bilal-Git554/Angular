@@ -47,6 +47,17 @@ export class UpdateBook
     }
    
   }
+  
+  resetInput()
+ {
+  this.update.resetForm();
+ } 
+
+ back()
+ {
+  this.showForm = false ;
+  this.Book_Details.book_id = 0 ;
+ }
 
   updateValue()
   {
@@ -62,7 +73,7 @@ export class UpdateBook
      localStorage.setItem("Book_Details",JSON.stringify(parse));
      alert("Updated Successfully!✅");
      
-     this.showForm = false;
+     this.back();
    }
    else
    {
@@ -70,15 +81,6 @@ export class UpdateBook
    }
  }
 
- resetInput()
- {
-  this.update.resetForm();
- } 
-
- back()
- {
-  this.showForm = false ;
-  this.Book_Details.book_id = 0 ;
- }
+ 
 
 }
