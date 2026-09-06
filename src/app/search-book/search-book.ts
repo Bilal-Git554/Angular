@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { Book_Details } from '../../Model';
 import { inject } from '@angular/core';
+import { Service } from '../Services/service';
 
 @Component({
   selector: 'app-search-book',
@@ -12,6 +13,8 @@ import { inject } from '@angular/core';
 export class SearchBook 
 {
    form = inject(FormBuilder);
+   service = inject(Service);
+
 
     Book_Details = this.form.group({
     book_id : this.form.control(0,[Validators.required,Validators.min(1)]),
@@ -27,13 +30,16 @@ export class SearchBook
 
   searchBook()
   {
-    const getBook = localStorage.getItem("Book_Details");
-    const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
+    // const getBook = localStorage.getItem("Book_Details");
+    // const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
     
-    const findBook = parsing.find(b => Number(b.book_id) === Number(this.Book_Details.controls.book_id.value));
-    if(findBook)
+    // const findBook = parsing.find(b => Number(b.book_id) === Number(this.Book_Details.controls.book_id.value));
+
+    const check_fetch_success = this.service.fetchBookby_Id(this.Book_Details.controls.book_id.value!);
+
+    if(check_fetch_success)
     {
-      this.Book_Details.patchValue(findBook);
+      this.Book_Details.patchValue(check_fetch_success);
       this.search = true ;
     }
     else

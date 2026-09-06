@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ViewChild } from '@angular/core';
+import { ViewChild, inject} from '@angular/core';
 import { Book_Details } from '../../Model';
+import { Service } from '../Services/service';
 
 @Component({
   selector: 'app-update-book',
@@ -13,6 +14,8 @@ export class UpdateBook
 {
   @ViewChild ('update_book') update ! : NgForm;
 
+  service = inject(Service);
+  
   todayString = new Date().toISOString().split('T')[0];
   showForm : boolean = false;
 
@@ -30,20 +33,21 @@ export class UpdateBook
   fetchForm()
   {
  
-   const getBookfromStorage = localStorage.getItem("Book_Details");
-   const parse : Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
+  //  const getBookfromStorage = localStorage.getItem("Book_Details");
+  //  const parse : Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
    
-   const findBook = parse.find(b => Number(b.book_id) === Number(this.Book_Details.book_id));
+  //  const findBook = parse.find(b => Number(b.book_id) === Number(this.Book_Details.book_id));
 
-   if(findBook)
+   const check_fetch_success = this.service.fetchBookby_Id(this.Book_Details.book_id);
+   if(check_fetch_success)
    {
-    this.Book_Details = {...findBook};
+    this.Book_Details = {...check_fetch_success};
     this.showForm = true;
    }
    else
     {
       this.showForm = false;
-      alert("Book Not Found!");
+      // alert("Book Not Found!❌");
     }
    
   }
@@ -61,17 +65,18 @@ export class UpdateBook
 
   updateValue()
   {
-   const getBookfromStorage = localStorage.getItem("Book_Details");
-   const parse:Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
+  //  const getBookfromStorage = localStorage.getItem("Book_Details");
+  //  const parse:Book_Details[] = getBookfromStorage ? JSON.parse(getBookfromStorage) : [];
    
-   const findBook = parse.findIndex(b => Number(b.book_id) === Number(this.Book_Details.book_id));
+  //  const findBook = parse.findIndex(b => Number(b.book_id) === Number(this.Book_Details.book_id));
    
-   if(findBook !== -1)
+   const check_update_success = this.service.updateBook(this.Book_Details);
+   if(check_update_success)
    {
-     parse[findBook] = {...this.Book_Details};
+    //  parse[findBook] = {...this.Book_Details};
      
-     localStorage.setItem("Book_Details",JSON.stringify(parse));
-     alert("Updated Successfully!✅");
+    //  localStorage.setItem("Book_Details",JSON.stringify(parse));
+    //  alert("Updated Successfully!✅");
      
      this.back();
    }
@@ -80,7 +85,5 @@ export class UpdateBook
     alert("Updatation Unsuccessfull ❌");
    }
  }
-
- 
 
 }

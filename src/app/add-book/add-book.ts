@@ -40,7 +40,7 @@ submit()
   // localStorage.setItem("Book_Details",JSON.stringify(parsing));
 
   
-  this.service.dataInput(this.add.value);
+  this.service.addBookInput(this.add.value);
 
   this.resetInput();
   this.initialAdd = false ;
