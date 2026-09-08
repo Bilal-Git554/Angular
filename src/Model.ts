@@ -20,5 +20,16 @@ export interface Add_Book_Details
   author_Name : string,
   about_Book : string,
   published_Date : string,
-  category_Id : number
+  category_Id : number | null
+}
+
+export interface Whole_Stock
+{
+  total_Books_Available : number,
+  read_Stock :
+  [{
+    book_Genre : string,
+    book_Deatils : Book_Details[],
+    total_Books_In_Category : number
+  }]
 }
