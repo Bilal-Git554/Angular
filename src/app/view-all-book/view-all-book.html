@@ -2,30 +2,36 @@
     <div>
         <h1 class="text-center text-white text-2xl ">📚 AVAILABLE BOOKS</h1>
     </div>
-     @if(service.add_book().length > 0)
+     @if(service.testingApi().length > 0)
     {
      <table class="text-white w-full text-center mt-5">
         <thead>
             <tr class="bg-slate-700">
                 <th class="border border-slate-600 p-3">ID</th>
-                <th class="border border-slate-600 p-3">NAME</th>
+                <th class="border border-slate-600 p-3">BOOK NAME</th>
                 <th class="border border-slate-600 p-3">AUTHOR NAME</th>
                 <th class="border border-slate-600 p-3">ABOUT BOOK</th>
                 <th class="border border-slate-600 p-3">PUBLISHED DATE</th>
-                <th class="border border-slate-600 p-3">CATEGORY</th>
+                <th class="border border-slate-600 p-3">CATEGORY NAME</th>
             </tr>
         </thead>
         <tbody>
-              @for (book of service.add_book(); track $index)
+              @for (book of service.testingApi(); track $index)
               { 
                <tr class="hover:bg-slate-800">
-                    <td class="border border-slate-600 p-3">{{book.book_id}}</td>
-                    <td class="border border-slate-600 p-3">{{book.book_name}}</td>
-                    <td class="border border-slate-600 p-3">{{book.author_name}}</td>
-                    <td class="border border-slate-600 p-3">{{book.about_book}}</td>
-                    <td class="border border-slate-600 p-3">{{book.published_date}}</td>
-                    <td class="border border-slate-600 p-3">{{book.category}}</td>
+                    <td class="border border-slate-600 p-3">{{book.book_Id}}</td>
+                    <td class="border border-slate-600 p-3">{{book.book_Name}}</td>
+                    <td class="border border-slate-600 p-3">{{book.author_Name}}</td>
+                    <td class="border border-slate-600 p-3">{{book.about_Book}}</td>
+                    <td class="border border-slate-600 p-3">{{book.published_Date.split('T')[0]}}</td>
+                    <td class="border border-slate-600 p-3">{{book.category.category_Name}}</td>
                 </tr> 
+                }
+                @empty 
+                {
+                 <tr>
+                  <td colspan="3" class="p-3 text-slate-400">Loading stock data...</td>
+                 </tr>
                 }
         </tbody>
       </table>

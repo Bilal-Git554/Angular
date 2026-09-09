@@ -15,67 +15,61 @@ export class DeleteBook
    
   @ViewChild ("delete_book") delete ! : NgForm;
   tableSwitch : boolean = false ;
-  todayString = new Date().toISOString().split('T')[0];
 
   Book_Details : Book_Details =
   {
-    book_id : 0,
-    book_name : '',
-    author_name : '',
-    about_book : '',
-    published_date : this.todayString,
-    category : ''
+    book_Id : 0,
+    book_Name : '',
+    author_Name : '',
+    about_Book : '',
+    published_Date : '',
+    category_Id : 0,
+    category : 
+    {
+      category_Id : 0,
+      category_Name : ''
+    }
   }
 
   checkBook()
   {
-  //  const getbook = localStorage.getItem("Book_Details");
-  //  const parse : Book_Details[] = getbook ? JSON.parse(getbook) : [] ;
-
-  //  const findbook = parse.find(b => Number(b.book_id) === Number(this.Book_Details.book_id)) ;
-
-   const check_fetch_success = this.service.fetchBookby_Id(this.Book_Details.book_id);
-
-   if(check_fetch_success)
-   {
-    this.Book_Details = {...check_fetch_success};
-    this.tableSwitch = true ;
-   }
-   else
-   {
-    //alert("Unable To Find The Book!");
-    this.tableSwitch = false ;
-   }
-
+   const book_Id = this.Book_Details.book_Id;
+   this.service.getBookby_Id(book_Id).subscribe(
+    {
+      next : (data) =>
+      {
+        data.published_Date = data.published_Date.split('T')[0];
+        this.Book_Details = data;
+        alert("Book Found To Delete!✅");
+        this.tableSwitch = true ;
+      },
+      error : (err) =>
+      {
+        alert("Book Not Found!❌");
+      }
+    }
+   )
   }
 
   deleteBook()
+ {
+  const book_Id = this.Book_Details.book_Id;
+  this.service.deleteBookby_Id(book_Id).subscribe({
+  next: () =>
   {
-  //   const getbook = localStorage.getItem("Book_Details");
-  //   const parse : Book_Details[] = getbook ? JSON.parse(getbook) : [] ;
-
-  //  const filter_book = parse.filter(b => Number(b.book_id) !== Number(this.Book_Details.book_id)) ;
-  
-   const check_delete_success = this.service.deleteBook(this.Book_Details.book_id);
-
-   if(check_delete_success)
-   {
-    // localStorage.setItem("Book_Details",JSON.stringify(filter_book));
-
-    // alert("Book Deleted Successfully!🚮");
-  
-    this.back();
+    alert("Book Deleted Successfully!🚮");
+  },
+  error: () =>
+  {
+    alert("Book Not Found!❌");
   }
-  else
-    {
-     alert("Book Deletion Unsuccessful!❌");
-    }
-
-  }
+   });
+   this.back(); 
+ }
 
   back()
   {
     this.tableSwitch = false ;
-    this.Book_Details.book_id = 0 ;
+    this.Book_Details.book_Id = 0 ;
   }
 }

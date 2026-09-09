@@ -5,10 +5,10 @@
     {
         <h1 class="text-center text-white text-2xl">🔎 SEARCH BOOK</h1>
         <label>ENTER BOOK ID :</label>
-        <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName="book_id">
+        <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName="book_Id">
         <br>
         <button type="submit" class="bg-green-500 p-3 mt-5 mr-3 ml-50 text-white rounded-md" (click)="searchBook()">SEARCH BOOK</button>                
-        @let book_id = Book_Details.controls.book_id;
+        @let book_id = Book_Details.controls.book_Id;
         @if(book_id.errors && book_id.dirty)
         {
             @if(book_id.errors['required'])
@@ -37,17 +37,17 @@
                     <th class="border border-slate-600 p-3">AUTHOR NAME</th>
                     <th class="border border-slate-600 p-3">ABOUT BOOK</th>
                     <th class="border border-slate-600 p-3">PUBLISHED DATE</th>
-                    <th class="border border-slate-600 p-3">CATEGORY</th>
+                    <th class="border border-slate-600 p-3">CATEGORY NAME</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="hover:bg-slate-800">
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_id.value}}</td>
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_name.value}}</td>
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.author_name.value}}</td>
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.about_book.value}}</td>
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.published_date.value}}</td>
-                    <td class="border border-slate-600 p-3">{{Book_Details.controls.category.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_Id.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.book_Name.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.author_Name.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.about_Book.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.published_Date.value}}</td>
+                    <td class="border border-slate-600 p-3">{{Book_Details.controls.category.controls.category_Name.value}}</td>
                 </tr>
             </tbody>
           </table>

@@ -1,1 +1,23 @@
-<h1 class="text-xl text-white">This Is Stock Availability</h1>
+<table class="text-white w-full text-center mt-5">
+    <thead>
+        <tr class="bg-slate-700">
+            <th class="border border-slate-600 p-3">BOOK CATEGORIES</th>
+            <th class="border border-slate-600 p-3">TOTAL BOOKS IN EACH CATEGORY</th>
+        </tr>
+    </thead>
+    <tbody>
+          @for (book_ of service.stockApi()?.read_Stock; track $index) 
+          {
+            <tr class="hover:bg-slate-800">
+              <td class="border border-slate-600 p-3">{{ book_.book_Genre }}</td>
+              <td class="border border-slate-600 p-3">{{ book_.total_Books_In_Category }}</td>
+            </tr>
+          }
+    </tbody>
+    <tfoot>
+        <tr class="bg-slate-900 font-bold border-t-2 border-slate-500">
+            <td class="border border-slate-600 p-3 text-right pr-6 text-indigo-400">TOTAL BOOKS AVAILABLE </td>
+            <td class="border border-slate-600 p-3 text-indigo-400 text-xl">{{ service.stockApi()?.total_Books_Available }}</td>
+        </tr>
+    </tfoot>
+</table>

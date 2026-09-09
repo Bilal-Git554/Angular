@@ -1,112 +1,104 @@
-import { Injectable, signal } from '@angular/core';
-import { Book_Details } from '../../Model';
+import { inject, Injectable, signal } from '@angular/core';
+import { Add_Book_Details, Book_Details, Whole_Stock } from '../../Model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Service 
 {
-  private _add_book = signal<Book_Details[]>(this.checkLocalStorage());
-  readonly add_book = this._add_book.asReadonly();  
-  
-  private checkLocalStorage() : Book_Details[]
+  private http = inject(HttpClient);
+  private apiUrl = 'https://localhost:7250/api/Books';
+  private stockUrl = 'https://localhost:7250/api/Stock';
+  stockApi = signal<Whole_Stock | null> (null);
+  testingApi = signal<Book_Details[]> ([]);
+
+  //Backend Link And Storing All Books In The Signal...And Stock Report In The Signal...
+//===================================================================================================================
+
+  getBooks()
   {
-   const getBook = localStorage.getItem("Book_Details");
-   const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
-   return parsing;
+    return this.http.get<Book_Details[]>(this.apiUrl).subscribe(
+      {
+        next : (data) =>
+        {
+          this.testingApi.set(data);
+        },
+        error : (err) =>
+        {
+          alert("Unable To Fetch The Books!❌");
+        }
+      }
+    )  
   }
-  //Setting The LocalStorage Data As A Default Value For The Signal...
-//===================================================================================================================
-  
-addBookInput(new_book : Book_Details)
-  {
-   const addToLocalStorage = this.checkLocalStorage();
-   
-   if(addToLocalStorage.some(b => Number(b.book_id) === Number(new_book.book_id)))
-   {
-    alert("Book ID Already Exists!❌");
-    return ;
-   }
-   else
-  {
-   const setBook = new_book;
-   addToLocalStorage.push(setBook);
-  
-   localStorage.setItem("Book_Details",JSON.stringify(addToLocalStorage));
-    
-   this._add_book.set(this.checkLocalStorage());
-   alert("Book Added Successfully!✅")
 
+//Getting All Books From The Backend...
+//===================================================================================================================
+
+  addBook(new_Book : Add_Book_Details)
+  {
+    return this.http.post<Add_Book_Details>(this.apiUrl,new_Book).subscribe(
+      {
+        next : (data) =>
+        {
+          alert("Book Added Successfully!✅")
+        },
+        error : (err) =>
+        {
+          alert("Book Addition Unsuccessful!❌")
+        }
+      }
+    )
   }
-}
-  //Add Book To The Local Storage And Used In View-All-Book Component To Display All The Books...
+
+//Adding Book To The Backend...
 //===================================================================================================================
- 
-fetchBookby_Id(find_book : number)
- {
-   const getBookfromStorage = this.checkLocalStorage();
-   const findBook = getBookfromStorage.find(b => Number(b.book_id) === Number(find_book));
 
-   if(findBook)
-   {
-    return findBook;
-   }
-   else
-   {
-    return false ;
-   }
+  getBookby_Id(find_Book : number)
+  {
+   return this.http.get<Book_Details>(
+    `${this.apiUrl}/${find_Book}`
+  );
+  }
 
- }
-//Using The Same Fetch Id Method For Search Book Update Book And Delete Book...
+//Getting The Book By The Id...  
 //===================================================================================================================
   
-updateBook(update_book : Book_Details)
+deleteBookby_Id(delete_book : number)
   {
-   const getBookfromStorage = this.checkLocalStorage();
-   const findBook = getBookfromStorage.findIndex(b => Number(b.book_id) === Number(update_book.book_id));
-
-   if(findBook !== -1)
-   {
-    getBookfromStorage[findBook] = {...update_book} ;
-
-    localStorage.setItem("Book_Details",JSON.stringify(getBookfromStorage));
-
-    this._add_book.set(this.checkLocalStorage());
-
-    alert("Updated Successfully!✅");
-
-    return true ;
-   }
-    else
-    {
-     return false ;
-    }
+    return this.http.delete(
+      `${this.apiUrl}/${delete_book}`
+    );
   }
-  //Update The Book In The LocalStorage As Well As The Signal()...
+
+//Deleting The Book By The Id...
 //===================================================================================================================
 
-deleteBook(delete_book : number)
+  updateBookby_Id (update_book : Add_Book_Details)
+  {
+    return this.http.put(
+      `${this.apiUrl}/${update_book.book_Id}`,
+      update_book
+    );
+  }
+
+//Updating The Book By The Id...
+//=================================================================================================================== 
+
+wholeStock()
 {
-   const getBookfromStorage = this.checkLocalStorage();
-   const findBook = getBookfromStorage.filter(b => Number(b.book_id) !== Number(delete_book)); 
-   
-   if(getBookfromStorage.length > findBook.length)
+  return this.http.get<Whole_Stock>(this.stockUrl).subscribe({
+   next : (data) =>
    {
-    localStorage.setItem("Book_Details",JSON.stringify(findBook));
-
-    this._add_book.set(this.checkLocalStorage());
-
-    alert("Book Deleted Successfully!🚮");
-    
-    return true ;
-   }
-  
-   else
+    console.log(data);
+    this.stockApi.set(data);
+   },
+   error : (err) =>
    {
-     return false ;
+    alert("Unable To Fetch The Stock!❌");
    }
+  })
 }
-  //Delete The Book In The LocalStorage As Well As The Signal()...
+}
+//Fetching The Whole Report...
 //===================================================================================================================
-
-}

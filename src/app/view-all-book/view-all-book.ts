@@ -12,18 +12,10 @@ import { Service } from '../Services/service';
 export class ViewAllBook 
 {
   service = inject(Service);
-
-  // viewBook = signal<Book_Details[]>([]);
   
-  // ngOnInit()
-  // {
-  //   const getBook = localStorage.getItem("Book_Details");
-  //   const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [] ;
-
-  //   if(parsing.length > 0)
-  //   {
-  //     this.viewBook.set(parsing);
-  //   }
-  // }
-   
+  ngOnInit() 
+  {
+    this.service.getBooks();
+  }
+ 
 }

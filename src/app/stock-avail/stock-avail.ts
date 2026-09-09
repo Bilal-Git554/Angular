@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Service } from '../Services/service';
 
 @Component({
   selector: 'app-stock-avail',
@@ -6,4 +7,12 @@ import { Component } from '@angular/core';
   templateUrl: './stock-avail.html',
   styleUrl: './stock-avail.css',
 })
-export class StockAvail {}
+export class StockAvail implements OnInit
+{
+  service = inject(Service);
+  ngOnInit()
+  {
+   this.service.wholeStock();
+  }
+
+}

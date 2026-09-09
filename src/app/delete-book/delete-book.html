@@ -6,7 +6,7 @@
 
   <div class="text-white">
     <label>ENTER BOOK ID :</label>
-    <input type="number" min="1" #deleteid="ngModel" name="delete_id" [(ngModel)] = "Book_Details.book_id" required
+    <input type="number" min="1" #deleteid="ngModel" name="delete_id" [(ngModel)] = "Book_Details.book_Id" required
     class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
     <button type="submit" class="bg-green-500 p-3 mt-5 ml-50 mr-3 text-white rounded-md" (click)="checkBook()">FIND BOOK</button>
     @if(deleteid.dirty && !deleteid.valid)
@@ -30,22 +30,22 @@
       <thead class="bg-slate-700">
       <tr>
         <th class="border border-slate-600 p-3">ID</th>
-        <th class="border border-slate-600 p-3">NAME</th>
+        <th class="border border-slate-600 p-3">BOOK NAME</th>
         <th class="border border-slate-600 p-3">AUTHOR NAME</th>
         <th class="border border-slate-600 p-3">ABOUT BOOK</th>
         <th class="border border-slate-600 p-3">PUBLISHED DATE</th>
-        <th class="border border-slate-600 p-3">CATEGORY</th>
+        <th class="border border-slate-600 p-3">CATEGORY NAME</th>
       </tr>
       </thead>
 
       <tbody>
       <tr class="hover:bg-slate-800">
-        <td class="border border-slate-600 p-3">{{Book_Details.book_id}}</td>
-        <td class="border border-slate-600 p-3">{{Book_Details.book_name}}</td>
-        <td class="border border-slate-600 p-3">{{Book_Details.author_name}}</td>
-        <td class="border border-slate-600 p-3">{{Book_Details.about_book}}</td>
-        <td class="border border-slate-600 p-3">{{Book_Details.published_date}}</td>
-        <td class="border border-slate-600 p-3">{{Book_Details.category}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.book_Id}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.book_Name}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.author_Name}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.about_Book}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.published_Date}}</td>
+        <td class="border border-slate-600 p-3">{{Book_Details.category.category_Name}}</td>
       </tr>
       </tbody>
 

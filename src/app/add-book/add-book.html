@@ -19,7 +19,7 @@
 
       <div>
      <label>ENTER BOOK ID :</label>
-     <input type="number" name="book_id" #bookid="ngModel" [(ngModel)]="Book_Details.book_id" required
+     <input type="number" name="book_Id" #bookid="ngModel" [(ngModel)]="Add_Book_Details.book_Id" required
       min="1"  class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((bookid.dirty || add_book.submitted) && bookid.invalid)
       {
@@ -31,7 +31,7 @@
 
      <div>
      <label>ENTER BOOK NAME :</label>
-     <input type="text" name="book_name" #bookname="ngModel" [(ngModel)]="Book_Details.book_name" required
+     <input type="text" name="book_Name" #bookname="ngModel" [(ngModel)]="Add_Book_Details.book_Name" required
      class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((bookname.dirty || add_book.submitted) && bookname.invalid)
       {
@@ -42,7 +42,7 @@
 
      <div>
      <label>ENTER AUTHOR NAME :</label>
-     <input type="text" name="author_name" #authorname="ngModel" [(ngModel)]="Book_Details.author_name" required
+     <input type="text" name="author_Name" #authorname="ngModel" [(ngModel)]="Add_Book_Details.author_Name" required
      class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white">
       @if((authorname.dirty || add_book.submitted) && authorname.invalid)
       {
@@ -53,7 +53,7 @@
 
      <div>
         <label class="text-white p-3">ABOUT BOOK :</label>
-        <input name="about_book" #aboutbook="ngModel" [(ngModel)]="Book_Details.about_book" required
+        <input name="about_Book" #aboutbook="ngModel" [(ngModel)]="Add_Book_Details.about_Book" required
           class="rounded-md border border-white w-90 p-3 mt-5 ml-10 bg-gray-800 text-white">       
        @if((aboutbook.dirty || add_book.submitted) && aboutbook.invalid)
        {
@@ -64,7 +64,7 @@
 
      <div>
      <label>PUBLISHED DATE :</label>
-     <input type="date" name="published_date" #published="ngModel" [(ngModel)]="Book_Details.published_date" required
+     <input type="date" name="published_Date" #published="ngModel" [(ngModel)]="Add_Book_Details.published_Date" required
      class="rounded-md border border-white w-90 p-3  ml-10 bg-gray-800 text-white">
       @if((published.dirty || add_book.submitted) && published.invalid)
       {
@@ -75,17 +75,18 @@
 
      <div>
         <label>ENTER BOOK CATEGORY :</label>
-        <select name="category" #category="ngModel" [(ngModel)]="Book_Details.category" required
+        <select name="category_Id" #category="ngModel" [(ngModel)]="Add_Book_Details.category_Id" required
         class="bg-gray-800 text-white w-90 p-3 ml-10 mt-7 rounded-md border border-white">
-        <option value="">--SELECT BOOK CATEGORY--</option>
-        <option value="ARTS">ARTS</option>
-        <option value="HISTORY">HISTORY</option>
-        <option value="PSYCHOLOGY">PSYCHOLOGY</option>
-        <option value="MONEY AND FINANCE">MONEY AND FINANCE</option>
-        <option value="ENGLISH LITERATURE AND POEMS">ENGLISH LITERATURE AND POEMS</option>
-        <option value="TECH AND SPACE">TECH AND SPACE</option>
-        <option value="LIFESTYLE AND WELLNESS">LIFESTYLE AND WELLNESS</option>
-        <option value="PROGRAMMING">PROGRAMMING</option>
+          <option [ngValue]="null">--SELECT BOOK CATEGORY--</option>
+          <option [ngValue]="109">NOVEL</option>
+          <option [ngValue]="127">HISTORY</option>
+          <option [ngValue]="162">GEOGRAPHY</option>
+          <option [ngValue]="478">HEALTH</option>
+          <option [ngValue]="532">MONEY</option>
+          <option [ngValue]="641">LIFE LESSONS</option>
+          <option [ngValue]="810">POLITICS</option>
+          <option [ngValue]="920">LITERATURE</option>
+          <option [ngValue]="928">PROGRAMMING</option>
         </select>
         @if((category.dirty || add_book.submitted) && category.invalid)
        {

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { Book_Details } from '../../Model';
 import { inject } from '@angular/core';
 import { Service } from '../Services/service';
 
@@ -17,12 +16,16 @@ export class SearchBook
 
 
     Book_Details = this.form.group({
-    book_id : this.form.control(0,[Validators.required,Validators.min(1)]),
-    book_name : this.form.control('',Validators.required),
-    author_name : this.form.control('',Validators.required),
-    about_book : this.form.control('',Validators.required),
-    published_date : this.form.control('',Validators.required),
-    category : this.form.control('',Validators.required)
+    book_Id : this.form.control(0,[Validators.required,Validators.min(1)]),
+    book_Name : this.form.control(''),
+    author_Name : this.form.control(''),
+    about_Book : this.form.control(''),
+    published_Date : this.form.control(''),
+    category_Id : this.form.control(0),
+    category : this.form.group({
+      category_Id : this.form.control(0),
+      category_Name : this.form.control('')
+    })
     });
    
    search : boolean = false ;
@@ -30,27 +33,28 @@ export class SearchBook
 
   searchBook()
   {
-    // const getBook = localStorage.getItem("Book_Details");
-    // const parsing : Book_Details[] = getBook ? JSON.parse(getBook) : [];
-    
-    // const findBook = parsing.find(b => Number(b.book_id) === Number(this.Book_Details.controls.book_id.value));
 
-    const check_fetch_success = this.service.fetchBookby_Id(this.Book_Details.controls.book_id.value!);
+  const book_Id = this.Book_Details.controls.book_Id.value!;
 
-    if(check_fetch_success)
+  this.service.getBookby_Id(book_Id).subscribe({
+    next: (data) =>
     {
-      this.Book_Details.patchValue(check_fetch_success);
-      this.search = true ;
-    }
-    else
+      data.published_Date = data.published_Date.split('T')[0];
+      this.Book_Details.patchValue(data);
+      this.search = true;
+      alert("Book Found!✅");
+    },
+
+    error: () =>
     {
       alert("Book Not Found!❌");
     }
-  }
-
+  });
+}
   back()
   {
     this.search = false ;
-    this.Book_Details.controls.book_id.setValue(0);
+    this.Book_Details.controls.book_Id.setValue(0);
   }
+
 }
