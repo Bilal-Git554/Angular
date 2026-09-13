@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AddBook } from './add-book/add-book';
 import { DeleteBook } from './delete-book/delete-book';
 import { UpdateBook } from './update-book/update-book';
-import { HomeBook } from './home-book/home-book';
+import { SigIn } from './sign-in/sign-in';
 import { SearchBook } from './search-book/search-book';
 import { StockAvail } from './stock-avail/stock-avail';
 import { Buttons } from './buttons/buttons';
@@ -19,7 +19,7 @@ import { ViewAllBook } from './view-all-book/view-all-book';
             AddBook,
             DeleteBook,
             UpdateBook,
-            HomeBook,
+            SigIn,
             SearchBook,
             StockAvail,
             FormsModule,
@@ -35,7 +35,7 @@ export class App
   title = "Megaruf Bilal K"; 
 
  routes = [
-  { name: '🏠 HOME', path: '/home-book' },
+  { name: '✅ SIGN IN PAGE', path: '/sign-in' },
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },
   { name: '🗑 DELETE BOOK', path: '/delete-book' },

@@ -4,11 +4,11 @@
     {
       <h1 class="text-center text-white text-2xl">✏️ UPDATE BOOK</h1>
 
-    <div >
+    <div class="text-center">
       <label>ENTER BOOK ID :</label>
       <input type="number" min="1" name="fetch_id" #fetchid="ngModel" [(ngModel)]= "Add_Book_Details.book_Id" required 
       class="rounded-md border border-white w-90 p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
-      <button type="submit" class="ml-50 mt-5 bg-green-500 rounded-md p-3" (click)="fetchForm()">FETCH DETAILS</button>
+      <button type="submit" class="mt-5 bg-green-500 rounded-md p-3 hover:scale-105" (click)="fetchForm()">FETCH DETAILS</button>
       @if(fetchid.dirty && !fetchid.valid)
       {
         <p class="text-red-500">This Field Is Required!</p>
@@ -98,8 +98,8 @@
          [class]="update_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md'
          :'bg-green-500 p-3 mt-5 mr-3 test-white rounded-md'">SUBMIT</button>
          
-         <button type="button" class="bg-yellow-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="resetInput()">RESET</button>
-         <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="back()">BACK</button>
+         <button type="button" class="bg-yellow-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="resetInput()">RESET</button>
+         <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
       </form>
     }
 </div>

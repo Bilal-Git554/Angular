@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeBook } from './home-book/home-book';
+import { SigIn } from './sign-in/sign-in';
 import { AddBook } from './add-book/add-book';
 import { UpdateBook } from './update-book/update-book';
 import { DeleteBook } from './delete-book/delete-book';
@@ -9,8 +9,8 @@ import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
 
 export const routes: Routes = [
-    { path : '' , redirectTo : 'home-book' , pathMatch : 'full' },
-    { path : 'home-book' , component : HomeBook },
+    { path : '' , redirectTo : 'sign-in' , pathMatch : 'full' },
+    { path : 'sign-in' , component : SigIn },
     { path : 'add-book' , component : AddBook },
     { path : 'update-book' , component : UpdateBook },
     { path : 'delete-book' , component : DeleteBook },

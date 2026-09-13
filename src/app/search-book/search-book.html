@@ -3,11 +3,17 @@
          
     @if(!search)
     {
-        <h1 class="text-center text-white text-2xl">🔎 SEARCH BOOK</h1>
+        <div class="text-center text-white text-2xl">
+            <h1>🔎 SEARCH BOOK</h1>
+        </div>
+
+      <div class="text-center">
         <label>ENTER BOOK ID :</label>
         <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName="book_Id">
         <br>
-        <button type="submit" class="bg-green-500 p-3 mt-5 mr-3 ml-50 text-white rounded-md" (click)="searchBook()">SEARCH BOOK</button>                
+        <button type="submit" class="bg-green-500 p-3 mt-5 text-white rounded-md hover:scale-105" (click)="searchBook()">SEARCH BOOK</button>                
+      </div>
+      
         @let book_id = Book_Details.controls.book_Id;
         @if(book_id.errors && book_id.dirty)
         {
@@ -20,6 +26,7 @@
                 <p class="text-red-500">ID Must Be Greater Than 0!</p>
             }
         }
+        
      }
         <br>
 
@@ -51,7 +58,7 @@
                 </tr>
             </tbody>
           </table>
-            <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md" (click)="back()">BACK</button>
+            <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
         }
         
 </div>
