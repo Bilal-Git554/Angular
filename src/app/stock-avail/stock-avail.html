@@ -1,3 +1,5 @@
+@if(show_stock)
+{
 <table class="text-white w-full text-center mt-5">
     <thead>
         <tr class="bg-slate-700">
@@ -21,3 +23,9 @@
         </tr>
     </tfoot>
 </table>
+}
+@else 
+{
+    <h1 class="text-center text-white text-2xl mt-5">📦Out Of Stock Or Unable To Fetch!</h1>
+
+}

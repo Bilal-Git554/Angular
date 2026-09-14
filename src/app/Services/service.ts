@@ -10,9 +10,12 @@ export class Service
   private http = inject(HttpClient);
   private apiUrl = 'https://localhost:7250/api/Books';
   private stockUrl = 'https://localhost:7250/api/Stock';
-  stockApi = signal<Whole_Stock | null> (null);
-  testingApi = signal<Book_Details[]> ([]);
 
+  private _stockApi = signal<Whole_Stock | null> (null);
+  readonly stockApi = this._stockApi.asReadonly();
+
+  private _testingApi = signal<Book_Details[]> ([]);
+   readonly testingApi = this._testingApi.asReadonly();
   //Backend Link And Storing All Books In The Signal...And Stock Report In The Signal...
 //===================================================================================================================
 
@@ -22,7 +25,7 @@ export class Service
       {
         next : (data) =>
         {
-          this.testingApi.set(data);
+          this._testingApi.set(data);
         },
         error : (err) =>
         {
@@ -90,8 +93,8 @@ wholeStock()
   return this.http.get<Whole_Stock>(this.stockUrl).subscribe({
    next : (data) =>
    {
-    console.log(data);
-    this.stockApi.set(data);
+    this._stockApi.set(data);
+    true;
    },
    error : (err) =>
    {
