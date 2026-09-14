@@ -15,5 +15,4 @@ export class StockAvail implements OnInit
    this.service.wholeStock();
   }
   
-  show_stock = this.service.stockApi();
 }
