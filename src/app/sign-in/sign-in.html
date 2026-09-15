@@ -1,22 +1,57 @@
 <div class="text-white text-center border border-white rounded-lg">
 
+ <div [formGroup] = "Sign_In_Up">
+
+  @if(!switchSign)
+  {
   <div class="text-white text-2xl m-5">
-    <h1>✅ SIGN UP & SIGN IN PAGE</h1>
+    <h1>✅ SIGN UP PAGE</h1>
   </div>
 
   <div>
     <label for="Email">Enter Your E-Mail :</label>
-    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white">
+    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"  formControlName = "user_Email">
   </div>
 
   <div>
     <label for="Password">Enter Your Password :</label>
-    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white">
+    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white"  formControlName = "user_Password">
   </div>
   
   <div class="mt-5 mb-5">
-    <button class="bg-blue-500 p-3 rounded-md hover:scale-105">SIGN UP</button>
-    <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105">SIGN IN</button>
+    <button class="bg-blue-500 p-3 rounded-md hover:scale-105" (click) = "New_User_Submit()">SIGN UP</button>
+    <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "Already_User()">ALREADY A USER</button>
   </div>
+ }
+ </div>
+
+
+ <!-- Sign Up================================================================================================================= -->  
+
+ <div [formGroup]="Sign_In_Up">
+
+  @if(switchSign)
+  {
+  <div class="text-white text-2xl m-5">
+    <h1>✅ SIGN IN PAGE</h1>
+  </div>
+
+  <div>
+    <label for="Email">Enter Your E-Mail :</label>
+    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName = "user_Email">
+  </div>
+
+  <div>
+    <label for="Password">Enter Your Password :</label>
+    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white" formControlName = "user_Password">
+  </div>
+  
+  <div class="mt-5 mb-5">
+    <button class="bg-blue-500 p-3 rounded-md hover:scale-105" (click) = "Already_User_Submit()">SIGN IN</button>
+    <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "New_User()">NEW USER</button>
+  </div>
+  }
+ </div>
+  <!-- Sign In================================================================================================================-->
 
 </div>

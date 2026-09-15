@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Add_Book_Details, Book_Details, Whole_Stock } from '../../Model';
+import { Add_Book_Details, Book_Details, User_Credentials, Whole_Stock } from '../../Model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class Service
   private http = inject(HttpClient);
   private apiUrl = 'https://localhost:7250/api/Books';
   private stockUrl = 'https://localhost:7250/api/Stock';
+  private userUrl = 'https://localhost:7250/api/User_Credentials_';
 
   private _stockApi = signal<Whole_Stock | null> (null);
   readonly stockApi = this._stockApi.asReadonly();
@@ -40,18 +41,7 @@ export class Service
 
   addBook(new_Book : Add_Book_Details)
   {
-    return this.http.post<Add_Book_Details>(this.apiUrl,new_Book).subscribe(
-      {
-        next : (data) =>
-        {
-          alert("Book Added Successfully!✅")
-        },
-        error : (err) =>
-        {
-          alert("Book Addition Unsuccessful!❌")
-        }
-      }
-    )
+    return this.http.post<Add_Book_Details>(this.apiUrl,new_Book);
   }
 
 //Adding Book To The Backend...
@@ -59,9 +49,7 @@ export class Service
 
   getBookby_Id(find_Book : number)
   {
-   return this.http.get<Book_Details>(
-    `${this.apiUrl}/${find_Book}`
-  );
+   return this.http.get<Book_Details>(`${this.apiUrl}/${find_Book}`);
   }
 
 //Getting The Book By The Id...  
@@ -69,9 +57,7 @@ export class Service
   
 deleteBookby_Id(delete_book : number)
   {
-    return this.http.delete(
-      `${this.apiUrl}/${delete_book}`
-    );
+    return this.http.delete(`${this.apiUrl}/${delete_book}`);
   }
 
 //Deleting The Book By The Id...
@@ -80,9 +66,7 @@ deleteBookby_Id(delete_book : number)
   updateBookby_Id (update_book : Add_Book_Details)
   {
     return this.http.put(
-      `${this.apiUrl}/${update_book.book_Id}`,
-      update_book
-    );
+      `${this.apiUrl}/${update_book.book_Id}`,update_book);
   }
 
 //Updating The Book By The Id...
@@ -102,6 +86,23 @@ wholeStock()
    }
   })
 }
-}
+
 //Fetching The Whole Report...
 //===================================================================================================================
+
+ newUser(new_user : User_Credentials)
+ {
+  return this.http.post<User_Credentials>(this.userUrl,new_user);
+ }
+
+//For New User
+//====================================================================================================================
+
+alreadyUser(already_user : string)
+{
+ return this.http.get(`${this.userUrl}/${already_user}`);
+}
+
+//For Existing User
+//====================================================================================================================
+}
