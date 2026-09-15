@@ -31,3 +31,9 @@ export interface Whole_Stock
   total_Books_In_Category: number
   }[]
 }
+
+export interface User_Credentials
+{
+  user_Email : string,
+  user_Password : string
+}
