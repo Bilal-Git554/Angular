@@ -31,7 +31,18 @@ export class AddBook
 submit()
 {
   
-  this.service.addBook(this.add.value);
+  this.service.addBook(this.add.value).subscribe(
+        {
+          next : (data) =>
+          {
+            alert("Book Added Successfully!✅")
+          },
+          error : (err) =>
+          {
+            alert("Book Addition Unsuccessful!❌")
+          }
+        }
+      );
 
   this.resetInput();
   this.initialAdd = false ;
