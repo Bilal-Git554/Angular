@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Service } from '../Services/service';
 import { User_Credentials } from '../../Model';
 
@@ -16,8 +16,8 @@ export class SigIn
   service = inject(Service);
 
   Sign_In_Up = this.form.group({
-    user_Email : this.form.control(''),
-    user_Password : this.form.control('')
+    user_Email : this.form.control('',[Validators.email,Validators.required]),
+    user_Password : this.form.control('',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/)])
   })
 
   Already_User_Submit()
@@ -32,7 +32,7 @@ export class SigIn
       },
       error : (err) =>
       {
-        alert("User Not Found!❌");
+        alert("User Not Found! Or Incorrect Password!❌");
       }
     })
     this.Sign_In_Up.reset();
@@ -40,6 +40,7 @@ export class SigIn
   New_User()
   {
     this.switchSign = false ;
+    this.Sign_In_Up.reset();
   }
 
 
@@ -54,7 +55,7 @@ export class SigIn
         },
         error : (err) =>
         {
-          alert("Sign Up Unsuccessful!❌");
+          alert("Sign Up Unsuccessful! Or User Already Exixts!❌");
         }
       });
     console.log(this.Sign_In_Up.value);
@@ -63,6 +64,7 @@ export class SigIn
     Already_User()
   {
     this.switchSign = true ;
+    this.Sign_In_Up.reset();
   }
   
 }

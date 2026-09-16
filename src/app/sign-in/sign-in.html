@@ -11,15 +11,47 @@
   <div>
     <label for="Email">Enter Your E-Mail :</label>
     <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"  formControlName = "user_Email">
+    @let new_user_email = Sign_In_Up.controls.user_Email;
+    @if(new_user_email.errors && new_user_email.dirty)
+    {
+      @if(new_user_email.errors['email'])
+      {
+        <p class="text-red-500">Enter A Valid Email Address!</p>
+      }
+      @if(new_user_email.errors['required'])
+      {
+        <p class="text-red-500">This Field Is Mandatory!</p>
+      }
+    }
   </div>
 
   <div>
     <label for="Password">Enter Your Password :</label>
     <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white"  formControlName = "user_Password">
+    
+    @let new_user_password = Sign_In_Up.controls.user_Password;
+    @if(new_user_password.errors && new_user_password.dirty)
+    {
+       @if(new_user_password.errors['required'])
+       {
+         <p class="text-red-500">This Field Is Mandatory!</p>
+       }
+       @if(new_user_password.errors['pattern'])
+       {
+        <p class="text-red-500">The Password Must Contain :</p>
+        <ul class="text-red-500">
+          <li>Must Contain Atleast 1 UpperCase</li>
+          <li>Must Contain Atleast 1 LowerCase</li>
+          <li>Must Contain Atleast 1 Number</li>
+          <li>Must Contain Atleast 1 Special Characters</li>
+        </ul>
+       }
+    }
   </div>
   
   <div class="mt-5 mb-5">
-    <button class="bg-blue-500 p-3 rounded-md hover:scale-105" (click) = "New_User_Submit()">SIGN UP</button>
+    <button [class]="Sign_In_Up.invalid ? 'bg-red-500 p-3 rounded-md hover:scale-105' : 'bg-blue-500 p-3 rounded-md hover:scale-105' " 
+    [disabled]="Sign_In_Up.invalid " (click) = "New_User_Submit()">SIGN UP</button>
     <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "Already_User()">ALREADY A USER</button>
   </div>
  }
@@ -39,15 +71,51 @@
   <div>
     <label for="Email">Enter Your E-Mail :</label>
     <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName = "user_Email">
+    
+    @let already_user_email = Sign_In_Up.controls.user_Email;
+    @if(already_user_email.errors && already_user_email.dirty)
+    {
+       @if(already_user_email.errors['email'])
+      {
+        <p class="text-red-500">Enter A Valid Email Address!</p>
+      }
+      @if(already_user_email.errors['required'])
+      {
+        <p class="text-red-500">This Field Is Mandatory!</p>
+      }
+    }
+  
   </div>
 
   <div>
     <label for="Password">Enter Your Password :</label>
     <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white" formControlName = "user_Password">
+    
+    @let already_user_password = Sign_In_Up.controls.user_Password;
+    @if(already_user_password.errors && already_user_password.dirty)
+    {
+       @if(already_user_password.errors['required'])
+       {
+         <p class="text-red-500">This Field Is Mandatory!</p>
+       }
+       @if(already_user_password.errors['pattern'])
+       {
+        <p class="text-red-500">The Password Must Contain :</p>
+        <ul class="text-red-500">
+          <li>Password Must Contain Atleast 1 UpperCase</li>
+          <li>Password Must Contain Atleast 1 LowerCase</li>
+          <li>Password Must Contain Atleast 1 Number</li>
+          <li>Password Must Contain Atleast 1 Special Characters</li>
+        </ul>
+       }
+    }
+  
+  
   </div>
   
   <div class="mt-5 mb-5">
-    <button class="bg-blue-500 p-3 rounded-md hover:scale-105" (click) = "Already_User_Submit()">SIGN IN</button>
+    <button [class]="Sign_In_Up.invalid ? 'bg-red-500 p-3 rounded-md hover:scale-105' : 'bg-blue-500 p-3 rounded-md hover:scale-105' " 
+    [disabled]="Sign_In_Up.invalid" (click) = "Already_User_Submit()">SIGN IN</button>
     <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "New_User()">NEW USER</button>
   </div>
   }
