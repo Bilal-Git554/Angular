@@ -22,9 +22,8 @@ export class SigIn
 
   Already_User_Submit()
   {
-    const find_user = this.Sign_In_Up.controls.user_Email.value!;
 
-    this.service.alreadyUser(find_user).subscribe({
+    this.service.alreadyUser(this.Sign_In_Up.value as User_Credentials).subscribe({
       next : (data) =>
       {
         console.log(data);

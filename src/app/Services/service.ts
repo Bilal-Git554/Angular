@@ -10,7 +10,8 @@ export class Service
   private http = inject(HttpClient);
   private apiUrl = 'https://localhost:7250/api/Books';
   private stockUrl = 'https://localhost:7250/api/Stock';
-  private userUrl = 'https://localhost:7250/api/User_Credentials_';
+  private tokenUrl = 'https://localhost:7250/api/User_Credentials_/login';
+  private newUserUrl = 'https://localhost:7250/api/User_Credentials_';
 
   private _stockApi = signal<Whole_Stock | null> (null);
   readonly stockApi = this._stockApi.asReadonly();
@@ -92,15 +93,15 @@ wholeStock()
 
  newUser(new_user : User_Credentials)
  {
-  return this.http.post<User_Credentials>(this.userUrl,new_user);
+  return this.http.post<User_Credentials>(this.newUserUrl,new_user);
  }
 
 //For New User
 //====================================================================================================================
 
-alreadyUser(already_user : string)
+alreadyUser(already_user : User_Credentials)
 {
- return this.http.get(`${this.userUrl}/${already_user}`);
+ return this.http.post<User_Credentials>(this.tokenUrl,already_user);
 }
 
 //For Existing User
