@@ -37,3 +37,9 @@ export interface User_Credentials
   user_Email : string,
   user_Password : string
 }
+
+export interface Jwt_Response
+{
+  email : string,
+  token : string
+}
