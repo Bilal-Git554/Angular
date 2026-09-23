@@ -7,12 +7,13 @@
   <div class="text-white text-center">
     <label>ENTER BOOK ID :</label>
     <input type="number" min="1" #deleteid="ngModel" name="delete_id" [(ngModel)] = "Book_Details.book_Id" required
-    class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"><br>
-    <button type="submit" class="bg-green-500 p-3 mt-5  mr-3 text-white rounded-md hover:scale-105" (click)="checkBook()">FIND BOOK</button>
+    class="rounded-md w-90 border border-white p-3 mt-7 ml-10 mb-5 bg-gray-800 text-white"><br>
     @if(deleteid.dirty && !deleteid.valid)
     {
      <p class="text-red-500">This Field Is Required!</p>
     }
+    <button type="submit" class="bg-green-500 p-3 mt-5  mr-3 text-white rounded-md hover:scale-105" (click)="checkBook()">FIND BOOK</button>
+  
   </div>
  }
 

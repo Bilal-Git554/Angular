@@ -9,11 +9,10 @@
 
       <div class="text-center">
         <label>ENTER BOOK ID :</label>
-        <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName="book_Id">
+        <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 mb-5
+        bg-gray-800 text-white" formControlName="book_Id">
         <br>
-        <button type="submit" class="bg-green-500 p-3 mt-5 text-white rounded-md hover:scale-105" (click)="searchBook()">SEARCH BOOK</button>                
-      </div>
-      
+
         @let book_id = Book_Details.controls.book_Id;
         @if(book_id.errors && book_id.dirty)
         {
@@ -26,7 +25,9 @@
                 <p class="text-red-500">ID Must Be Greater Than 0!</p>
             }
         }
-        
+      
+        <button type="submit" class="bg-green-500 p-3 mt-5 text-white rounded-md hover:scale-105" (click)="searchBook()">SEARCH BOOK</button>                
+    </div>
      }
         <br>
 
