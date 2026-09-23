@@ -23,17 +23,7 @@ export class SigIn
   Already_User_Submit()
   {
 
-    this.service.alreadyUser(this.Sign_In_Up.value as User_Credentials).subscribe({
-      next : (data) =>
-      {
-        console.log(data);
-        alert("User Founded Successfully!✅");
-      },
-      error : (err) =>
-      {
-        alert("User Not Found! Or Incorrect Password!❌");
-      }
-    })
+    this.service.alreadyUser(this.Sign_In_Up.value as User_Credentials);
     this.Sign_In_Up.reset();
   }
   New_User()

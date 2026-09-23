@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AddBook } from './add-book/add-book';
 import { DeleteBook } from './delete-book/delete-book';
@@ -10,8 +10,7 @@ import { Buttons } from './buttons/buttons';
 import { FormsModule } from '@angular/forms';
 import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
-
-
+import { Service } from './Services/service';
 
 @Component({
   selector: 'app-root',
@@ -30,10 +29,12 @@ import { ViewAllBook } from './view-all-book/view-all-book';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App 
+export class App
 {
   title = "Megaruf Bilal K"; 
-
+ 
+  service = inject(Service);
+ 
  routes = [
   { name: '✅ SIGN IN PAGE', path: '/sign-in' },
   { name: '➕ ADD BOOK', path: '/add-book' },

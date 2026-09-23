@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Add_Book_Details, Book_Details, User_Credentials, Whole_Stock } from '../../Model';
+import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock } from '../../Model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -17,8 +17,11 @@ export class Service
   readonly stockApi = this._stockApi.asReadonly();
 
   private _testingApi = signal<Book_Details[]> ([]);
-   readonly testingApi = this._testingApi.asReadonly();
+  readonly testingApi = this._testingApi.asReadonly();
   //Backend Link And Storing All Books In The Signal...And Stock Report In The Signal...
+  
+  private _checkLogIn = signal(localStorage.getItem('Token') !== null);
+  readonly checkLogIn = this._checkLogIn.asReadonly();
 //===================================================================================================================
 
   getBooks()
@@ -50,7 +53,7 @@ export class Service
 
   getBookby_Id(find_Book : number)
   {
-   return this.http.get<Book_Details>(`${this.apiUrl}/${find_Book}`);
+   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,{});
   }
 
 //Getting The Book By The Id...  
@@ -58,7 +61,7 @@ export class Service
   
 deleteBookby_Id(delete_book : number)
   {
-    return this.http.delete(`${this.apiUrl}/${delete_book}`);
+    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{});
   }
 
 //Deleting The Book By The Id...
@@ -101,7 +104,19 @@ wholeStock()
 
 alreadyUser(already_user : User_Credentials)
 {
- return this.http.post<User_Credentials>(this.tokenUrl,already_user);
+ return this.http.post<Jwt_Response>(this.tokenUrl,already_user).subscribe({
+      next : (data) =>
+      {
+        console.log(data);
+        localStorage.setItem('Token',data.token);
+        this._checkLogIn.set(true);
+        alert("User Founded Successfully!✅");
+      },
+      error : (err) =>
+      {
+        alert("User Not Found! Or Incorrect Password!❌");
+      }
+    });
 }
 
 //For Existing User
