@@ -10,7 +10,7 @@
 
   <div>
     <label for="Email">Enter Your E-Mail :</label>
-    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white"  formControlName = "user_Email">
+    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 mb-5 bg-gray-800 text-white"  formControlName = "user_Email">
     @let new_user_email = Sign_In_Up.controls.user_Email;
     @if(new_user_email.errors && new_user_email.dirty)
     {
@@ -27,7 +27,7 @@
 
   <div>
     <label for="Password">Enter Your Password :</label>
-    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white"  formControlName = "user_Password">
+    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 mb-5 bg-gray-800 text-white"  formControlName = "user_Password">
     
     @let new_user_password = Sign_In_Up.controls.user_Password;
     @if(new_user_password.errors && new_user_password.dirty)
@@ -70,7 +70,7 @@
 
   <div>
     <label for="Email">Enter Your E-Mail :</label>
-    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 bg-gray-800 text-white" formControlName = "user_Email">
+    <input type="email"  class="rounded-md w-90 border border-white p-3 mt-7 ml-10 mb-5 bg-gray-800 text-white" formControlName = "user_Email">
     
     @let already_user_email = Sign_In_Up.controls.user_Email;
     @if(already_user_email.errors && already_user_email.dirty)
@@ -89,7 +89,7 @@
 
   <div>
     <label for="Password">Enter Your Password :</label>
-    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 bg-gray-800 text-white" formControlName = "user_Password">
+    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 mb-5 bg-gray-800 text-white" formControlName = "user_Password">
     
     @let already_user_password = Sign_In_Up.controls.user_Password;
     @if(already_user_password.errors && already_user_password.dirty)
