@@ -8,11 +8,13 @@ import { SearchBook } from './search-book/search-book';
 import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
 import { authGuard } from './auth-guard';
+import { LogOut } from './log-out/log-out';
 
 export const routes: Routes = [
     { path : '' , redirectTo : 'sign-in' , pathMatch : 'full' },
     { path : 'sign-in' , component : SigIn },
     { path : 'add-book' , component : AddBook, canActivate: [authGuard] },
+    { path : 'log-out' , component : LogOut, canActivate: [authGuard] },
     { path : 'update-book' , component : UpdateBook, canActivate: [authGuard]  },
     { path : 'delete-book' , component : DeleteBook, canActivate: [authGuard]  },
     { path : 'search-book' , component : SearchBook, canActivate: [authGuard]  },

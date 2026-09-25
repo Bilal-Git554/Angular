@@ -40,7 +40,7 @@ export class SigIn
         next : (data) =>
         {
           console.log(data);
-          alert("Signed Up Successfully!✅");
+          alert("Signed Up Successfully!✅. Please Sign In By Clicking The Already User Button!");
         },
         error : (err) =>
         {

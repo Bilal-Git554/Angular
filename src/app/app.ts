@@ -36,7 +36,7 @@ export class App
   service = inject(Service);
  
  routes = [
-  { name: '✅ SIGN IN PAGE', path: '/sign-in' },
+  { name: '↪LOG OUT', path: '/log-out' },
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },
   { name: '🗑 DELETE BOOK', path: '/delete-book' },
