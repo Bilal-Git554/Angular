@@ -107,7 +107,6 @@ alreadyUser(already_user : User_Credentials)
  return this.http.post<Jwt_Response>(this.tokenUrl,already_user).subscribe({
       next : (data) =>
       {
-        console.log(data);
         localStorage.setItem('Token',data.token);
         this._checkLogIn.set(true);
         alert("User Founded Successfully!✅");

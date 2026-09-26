@@ -9,10 +9,11 @@ import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
 import { authGuard } from './auth-guard';
 import { LogOut } from './log-out/log-out';
+import { guestGuard } from './guest-guard';
 
 export const routes: Routes = [
     { path : '' , redirectTo : 'sign-in' , pathMatch : 'full' },
-    { path : 'sign-in' , component : SigIn },
+    { path : 'sign-in' , component : SigIn, canActivate: [guestGuard] },
     { path : 'add-book' , component : AddBook, canActivate: [authGuard] },
     { path : 'log-out' , component : LogOut, canActivate: [authGuard] },
     { path : 'update-book' , component : UpdateBook, canActivate: [authGuard]  },
