@@ -10,10 +10,12 @@ import { ViewAllBook } from './view-all-book/view-all-book';
 import { authGuard } from './auth-guard';
 import { LogOut } from './log-out/log-out';
 import { guestGuard } from './guest-guard';
+import { ForgotPassword } from './forgot-password/forgot-password';
 
 export const routes: Routes = [
     { path : '' , redirectTo : 'sign-in' , pathMatch : 'full' },
     { path : 'sign-in' , component : SigIn, canActivate: [guestGuard] },
+    { path : 'forgot-password' , component : ForgotPassword },
     { path : 'add-book' , component : AddBook, canActivate: [authGuard] },
     { path : 'log-out' , component : LogOut, canActivate: [authGuard] },
     { path : 'update-book' , component : UpdateBook, canActivate: [authGuard]  },

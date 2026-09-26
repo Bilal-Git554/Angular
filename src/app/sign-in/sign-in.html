@@ -5,7 +5,7 @@
   @if(!switchSign)
   {
   <div class="text-white text-2xl m-5">
-    <h1>✅ SIGN UP PAGE</h1>
+    <h1>✅ SIGN UP</h1>
   </div>
 
   <div>
@@ -65,7 +65,7 @@
   @if(switchSign)
   {
   <div class="text-white text-2xl m-5">
-    <h1>✅ SIGN IN PAGE</h1>
+    <h1>✅ SIGN IN</h1>
   </div>
 
   <div>
@@ -117,9 +117,9 @@
     <button [class]="Sign_In_Up.invalid ? 'bg-red-500 p-3 rounded-md hover:scale-105' : 'bg-blue-500 p-3 rounded-md hover:scale-105' " 
     [disabled]="Sign_In_Up.invalid" (click) = "Already_User_Submit()">SIGN IN</button>
     <button class="bg-blue-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "New_User()">NEW USER</button>
+    <button class="bg-yellow-500 p-3 rounded-md ml-5 hover:scale-105" (click) = "forgot_password()">FORGOT PASSWORD</button>
   </div>
   }
  </div>
   <!-- Sign In================================================================================================================-->
-
 </div>

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Service } from '../Services/service';
 import { User_Credentials } from '../../Model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +15,7 @@ export class SigIn
   switchSign : boolean = false ;
   form = inject(FormBuilder);
   service = inject(Service);
+  router = inject(Router);
 
   Sign_In_Up = this.form.group({
     user_Email : this.form.control('',[Validators.email,Validators.required]),
@@ -56,4 +58,9 @@ export class SigIn
     this.Sign_In_Up.reset();
   }
   
+  forgot_password()
+  {
+    alert("Redirecting To Forgot Password Page!🤷");
+    this.router.navigate(['/forgot-password']);
+  }
 }
