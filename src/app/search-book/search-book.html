@@ -1,13 +1,13 @@
-<div class="text-white">
+<div class="text-center text-white border border-white rounded-lg">
     <div [formGroup] = "Book_Details">
          
     @if(!search)
     {
-        <div class="text-center text-white text-2xl">
+        <div class=" text-white text-2xl mt-5">
             <h1>🔎 SEARCH BOOK</h1>
         </div>
 
-      <div class="text-center">
+      <div>
         <label>ENTER BOOK ID :</label>
         <input type="number" class="rounded-md w-90 border border-white p-3 mt-7 ml-10 mb-5
         bg-gray-800 text-white" formControlName="book_Id">
@@ -34,10 +34,10 @@
         @if (search) 
         {
           <div>
-             <h1 class="text-center text-white text-2xl mt-5">🔍 SEARCH RESULTS</h1>
+             <h1 class="text-white text-2xl mt-5">🔍 SEARCH RESULTS</h1>
           </div> 
 
-          <table class="w-full text-white text-center mt-5">
+          <table class="w-full text-white mt-5">
             <thead class="bg-slate-700">
                 <tr>
                     <th class="border border-slate-600 p-3">ID</th>
@@ -59,7 +59,10 @@
                 </tr>
             </tbody>
           </table>
-            <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
+
+          <div>
+            <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
+          </div>
         }
         
 </div>
