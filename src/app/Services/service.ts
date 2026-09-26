@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock } from '../../Model';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,9 @@ export class Service
   
   private _checkLogIn = signal(localStorage.getItem('Token') !== null);
   readonly checkLogIn = this._checkLogIn.asReadonly();
+
+  private router = inject (Router);
+  //For Component Navigtion...
 //===================================================================================================================
 
   getBooks()
@@ -109,6 +113,7 @@ alreadyUser(already_user : User_Credentials)
       {
         localStorage.setItem('Token',data.token);
         this._checkLogIn.set(true);
+        this.router.navigate(['add-book']);
         alert("User Founded Successfully!✅");
       },
       error : (err) =>
@@ -124,6 +129,8 @@ alreadyUser(already_user : User_Credentials)
 logOut()
 {
   localStorage.removeItem('Token');
+  this._checkLogIn.set(false);
+  this.router.navigate(['sign-in']);
   alert("Logged Out Successfully!✅");
 }
 //For Log Out
