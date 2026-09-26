@@ -16,7 +16,7 @@ export class SearchBook
 
 
     Book_Details = this.form.group({
-    book_Id : this.form.control(0,[Validators.required,Validators.min(1)]),
+    book_Id : this.form.control(0,[Validators.required,Validators.min(0-1)]),
     book_Name : this.form.control(''),
     author_Name : this.form.control(''),
     about_Book : this.form.control(''),
