@@ -57,4 +57,9 @@ submit()
   {
     this.initialAdd = true ;
   }
+  
+  back()
+  {
+    this.initialAdd = false;
+  }
 }

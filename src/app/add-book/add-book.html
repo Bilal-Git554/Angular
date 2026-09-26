@@ -1,10 +1,10 @@
-<div class="text-md text-white">
+<div class="text-md text-white text-center border border-white rounded-lg">
    
   @if(!initialAdd)
   {
-    <h1 class="text-center text-white text-2xl">➕ ADD BOOK</h1>
-   <div class="text-center">
-    <button type="submit" class="bg-green-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="addBook()">ADD BOOK</button>
+    <h1 class="text-white text-2xl mt-5">➕ ADD BOOK</h1>
+   <div>
+    <button type="submit" class="bg-green-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105" (click)="addBook()">ADD BOOK</button>
    </div>
   }
 
@@ -13,7 +13,7 @@
    <form #add_book = "ngForm" (ngSubmit)="submit()">
      
        <div>
-          <h1 class="text-center text-white text-2xl mt-5">➕ ADD YOUR BOOK CAREFULLY!</h1>
+          <h1 class="text-white text-2xl mt-5">➕ ADD YOUR BOOK CAREFULLY!</h1>
         </div> 
         <br>
 
@@ -97,10 +97,10 @@
       <br>
 
      <button type="submit" [disabled]="add_book.invalid" 
-     [class]="add_book.invalid?'bg-red-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105':
-     'bg-green-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105'">SUBMIT</button>
-     <button type="button" class="bg-yellow-500 p-3 mt-5 mr-3 text-white rounded-md hover:scale-105" (click)="resetInput()">RESET</button>
-
+     [class]="add_book.invalid?'bg-red-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105':
+     'bg-green-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105'">SUBMIT</button>
+     <button type="button" class="bg-yellow-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105" (click)="resetInput()">RESET</button>
+     <button type="button" class="bg-blue-500 p-3 mt-5 mr-3 mb-5 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
 
     </form>
   }
