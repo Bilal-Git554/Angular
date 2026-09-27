@@ -43,3 +43,8 @@ export interface Jwt_Response
   email : string,
   token : string
 }
+
+export interface Forgot
+{
+  email : string
+}

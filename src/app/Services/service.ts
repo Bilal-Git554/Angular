@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock } from '../../Model';
+import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock, Forgot } from '../../Model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ export class Service
   private stockUrl = 'https://localhost:7250/api/Stock';
   private tokenUrl = 'https://localhost:7250/api/User_Credentials_/login';
   private newUserUrl = 'https://localhost:7250/api/User_Credentials_';
+  private forgotUrl = 'https://localhost:7250/api/User_Credentials_/forgot-password'
 
   private _stockApi = signal<Whole_Stock | null> (null);
   readonly stockApi = this._stockApi.asReadonly();
@@ -134,5 +135,23 @@ logOut()
   alert("Logged Out Successfully!✅");
 }
 //For Log Out
+//====================================================================================================================
+
+forgot_User(User_Recovery : Forgot)
+{
+  this.http.post(this.forgotUrl,User_Recovery,{responseType: 'text'}).subscribe({
+    next : (data) =>
+    {
+      console.log(data);
+      alert(data);
+    },
+    error : (err) =>
+    {
+      console.log(err.error);
+      alert(err.error);
+    }
+  })
+}
+//For Forgot Password
 //====================================================================================================================
 }
