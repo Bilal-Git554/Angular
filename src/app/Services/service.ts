@@ -139,16 +139,16 @@ logOut()
 
 forgot_User(User_Recovery : Forgot)
 {
-  this.http.post(this.forgotUrl,User_Recovery,{responseType: 'text'}).subscribe({
+  this.http.post(this.forgotUrl, User_Recovery, { responseType: 'text' }).subscribe({
     next : (data) =>
     {
       console.log(data);
-      alert(data);
+      alert("User Founded!");
     },
     error : (err) =>
     {
       console.log(err.error);
-      alert(err.error);
+      alert("User Not Founded!");
     }
   })
 }
