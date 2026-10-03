@@ -41,7 +41,6 @@ export class SigIn
       {
         next : (data) =>
         {
-          console.log(data);
           alert("Signed Up Successfully!✅. Please Sign In By Clicking The Already User Button!");
         },
         error : (err) =>
@@ -49,7 +48,6 @@ export class SigIn
           alert("Sign Up Unsuccessful! Or User Already Exixts!❌");
         }
       });
-    console.log(this.Sign_In_Up.value);
     this.Sign_In_Up.reset();
   }
     Already_User()
