@@ -48,3 +48,16 @@ export interface Forgot
 {
   email : string
 }
+
+export interface Reset
+{
+  token : string,
+  new_Password : string,
+  confirm_Password : string
+}
+
+export interface Send_Password_Token
+{
+  token : string,
+  new_Password : string
+}

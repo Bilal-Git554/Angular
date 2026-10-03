@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock, Forgot } from '../../Model';
+import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock, Forgot, Send_Password_Token } from '../../Model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,8 @@ export class Service
   private stockUrl = 'https://localhost:7250/api/Stock';
   private tokenUrl = 'https://localhost:7250/api/User_Credentials_/login';
   private newUserUrl = 'https://localhost:7250/api/User_Credentials_';
-  private forgotUrl = 'https://localhost:7250/api/User_Credentials_/forgot-password'
+  private forgotUrl = 'https://localhost:7250/api/User_Credentials_/forgot-password';
+  private resetUrl = 'https://localhost:7250/api/User_Credentials_/reset-password';
 
   private _stockApi = signal<Whole_Stock | null> (null);
   readonly stockApi = this._stockApi.asReadonly();
@@ -137,21 +138,37 @@ logOut()
 //For Log Out
 //====================================================================================================================
 
-forgot_User(User_Recovery : Forgot)
+forgot_User(forgot_password : Forgot)
 {
-  this.http.post(this.forgotUrl, User_Recovery, { responseType: 'text' }).subscribe({
+  this.http.post(this.forgotUrl, forgot_password, { responseType: 'text' }).subscribe({
     next : (data) =>
     {
-      console.log(data);
       alert("User Founded!");
     },
     error : (err) =>
     {
-      console.log(err.error);
       alert("User Not Founded!");
     }
   })
 }
 //For Forgot Password
+//====================================================================================================================
+
+reset_User(reset_password : Send_Password_Token)
+{
+  this.http.post(this.resetUrl,reset_password,{responseType: 'text'}).subscribe({
+    next : (data) =>
+      {
+        console.log(data);
+        alert("Password Reseted Successfully!✅");
+      },
+      error : (err) =>
+        {
+          console.log(err.error);
+          alert("Password Reset Unsuccessful!❌");
+        }   
+  })
+}
+//For Reset Password
 //====================================================================================================================
 }
