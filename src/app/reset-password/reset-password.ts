@@ -22,7 +22,7 @@ export class ResetPassword
 
   Reset_Password : Reset =
   {
-    token : this.token ? this.token : '',
+    token : decodeURIComponent(this.token || ''),
     new_Password : '',
     confirm_Password : ''
   }
