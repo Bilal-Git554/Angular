@@ -50,12 +50,20 @@ export class Service
 //Getting All Books From The Backend...
 //===================================================================================================================
 
-  addBook(new_Book : Add_Book_Details)
-  {
-    return this.http.post<Add_Book_Details>(this.apiUrl,new_Book);
-  }
+addBook(new_Book: Add_Book_Details)
+{
+  const token = localStorage.getItem('Token');
 
-//Adding Book To The Backend...
+  return this.http.post<Add_Book_Details>(this.apiUrl,new_Book,
+    {
+      headers: 
+      {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+//Adding Book To The Backend With The Bearer Token...
 //===================================================================================================================
 
   getBookby_Id(find_Book : number)
