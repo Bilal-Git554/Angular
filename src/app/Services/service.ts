@@ -68,7 +68,15 @@ addBook(new_Book: Add_Book_Details)
 
   getBookby_Id(find_Book : number)
   {
-   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,{});
+    const token = localStorage.getItem('Token');
+
+   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,
+    {
+      headers:
+      {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 
 //Getting The Book By The Id...  
@@ -76,7 +84,15 @@ addBook(new_Book: Add_Book_Details)
   
 deleteBookby_Id(delete_book : number)
   {
-    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{});
+    const token = localStorage.getItem('Token');
+    
+    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,
+      {
+        headers:
+        {
+          Authorization: `Bearer ${token}`
+        }
+      });
   }
 
 //Deleting The Book By The Id...
@@ -84,8 +100,15 @@ deleteBookby_Id(delete_book : number)
 
   updateBookby_Id (update_book : Add_Book_Details)
   {
-    return this.http.put(
-      `${this.apiUrl}/${update_book.book_Id}`,update_book);
+    const token = localStorage.getItem('Token');
+
+    return this.http.put(`${this.apiUrl}/${update_book.book_Id}`,update_book,
+      {
+        headers:
+        {
+          Authorization: `Bearer ${token}`
+        }
+      });
   }
 
 //Updating The Book By The Id...

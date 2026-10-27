@@ -39,7 +39,8 @@ submit()
           },
           error : (err) =>
           {
-            alert("Book Addition Unsuccessful!❌")
+            alert("Book Addition Unsuccessful!❌" + "\n" + 
+            "Due To Token Expired Or Invalid Token! Please Log Out And Log In Again To Add The Book.❗");
           }
         }
       );
