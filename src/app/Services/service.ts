@@ -68,15 +68,7 @@ addBook(new_Book: Add_Book_Details)
 
   getBookby_Id(find_Book : number)
   {
-    const token = localStorage.getItem('Token');
-
-   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,
-    {
-      headers:
-      {
-        Authorization: `Bearer ${token}`
-      }
-    });
+   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,{});
   }
 
 //Getting The Book By The Id...  
