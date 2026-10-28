@@ -61,7 +61,9 @@ export class DeleteBook
   },
   error: () =>
   {
-    alert("Book Not Found!❌");
+    alert("Book Deletion Unsuccessful!❌" + "\n" +
+      "Due To Token Expired Or Invalid Token! Please Log Out And Log In Again To Delete The Book.❗"
+    );
   }
    });
    this.back(); 

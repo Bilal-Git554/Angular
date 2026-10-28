@@ -78,7 +78,7 @@ deleteBookby_Id(delete_book : number)
   {
     const token = localStorage.getItem('Token');
     
-    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,
+    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{},
       {
         headers:
         {
