@@ -62,8 +62,11 @@ export class DeleteBook
   error: () =>
   {
     alert("Book Deletion Unsuccessful!❌" + "\n" +
-      "Due To Token Expired Or Invalid Token! Please Log Out And Log In Again To Delete The Book.❗"
-    );
+         "Error Due To :" + "\n" +
+         "1. Book Id Not Found!" + "\n" +
+         "2. Expired Token!" + "\n" +
+         "3. Invalid Token!" + "\n" +
+         "4. This Certain Action Is Only Allowed For Admins!");
   }
    });
    this.back(); 

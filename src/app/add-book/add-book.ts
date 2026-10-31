@@ -39,8 +39,12 @@ submit()
           },
           error : (err) =>
           {
-            alert("Book Addition Unsuccessful!❌" + "\n" + 
-            "Due To Token Expired Or Invalid Token! Please Log Out And Log In Again To Add The Book.❗");
+            alert("Book Addition Unsuccessful!❌" + "\n" +
+         "Error Due To :" + "\n" +
+         "1. Book Id Not Found!" + "\n" +
+         "2. Expired Token!" + "\n" +
+         "3. Invalid Token!" + "\n" +
+         "4. This Certain Action Is Only Allowed For Admins!");
           }
         }
       );
