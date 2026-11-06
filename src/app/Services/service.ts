@@ -53,7 +53,11 @@ export class Service
 addBook(new_Book: Add_Book_Details)
 {
   const token = localStorage.getItem('Token');
-
+  if(!token)
+  {
+    alert("Can't Find The Token!");
+    this.router.navigate(['/sign-in']);
+  }
   return this.http.post<Add_Book_Details>(this.apiUrl,new_Book,
     {
       headers: 
@@ -77,7 +81,11 @@ addBook(new_Book: Add_Book_Details)
 deleteBookby_Id(delete_book : number)
   {
     const token = localStorage.getItem('Token');
-    
+    if(!token)
+    {
+      alert("Can't Find The Token!");
+      this.router.navigate(['/sign-in']);
+    }
     return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{},
       {
         headers:
@@ -93,7 +101,11 @@ deleteBookby_Id(delete_book : number)
   updateBookby_Id (update_book : Add_Book_Details)
   {
     const token = localStorage.getItem('Token');
-
+    if(!token)
+    {
+      alert("Can't Find The Token!");
+      this.router.navigate(['/sign-in']);
+    }
     return this.http.put(`${this.apiUrl}/${update_book.book_Id}`,update_book,
       {
         headers:
