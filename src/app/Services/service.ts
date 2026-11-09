@@ -11,8 +11,9 @@ export class Service
   private http = inject(HttpClient);
   private apiUrl = 'https://localhost:7250/api/Books';
   private stockUrl = 'https://localhost:7250/api/Stock';
-  private tokenUrl = 'https://localhost:7250/api/User_Credentials_/login';
-  private newUserUrl = 'https://localhost:7250/api/User_Credentials_';
+  private loginUrl = 'https://localhost:7250/api/User_Credentials_/login';
+  private user_sign_in_Url = 'https://localhost:7250/api/User_Credentials_/user';
+  private admin_sign_in_Url = 'https://localhost:7250/api/User_Credentials_/admin';
   private forgotUrl = 'https://localhost:7250/api/User_Credentials_/forgot-password';
   private resetUrl = 'https://localhost:7250/api/User_Credentials_/reset-password';
 
@@ -138,7 +139,7 @@ wholeStock()
 
  newUser(new_user : User_Credentials)
  {
-  return this.http.post<User_Credentials>(this.newUserUrl,new_user);
+  return this.http.post<User_Credentials>(this.user_sign_in_Url,new_user);
  }
 
 //For New User
@@ -146,7 +147,7 @@ wholeStock()
 
 alreadyUser(already_user : User_Credentials)
 {
- return this.http.post<Jwt_Response>(this.tokenUrl,already_user).subscribe({
+ return this.http.post<Jwt_Response>(this.loginUrl,already_user).subscribe({
       next : (data) =>
       {
         localStorage.setItem('Token',data.token);
