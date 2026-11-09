@@ -5,12 +5,12 @@ import { User_Credentials } from '../../Model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-in',
+  selector: 'app-user_sign_in',
   imports: [ReactiveFormsModule],
-  templateUrl: './sign-in.html',
-  styleUrl: './sign-in.css'
+  templateUrl: './user_sign_in.html',
+  styleUrl: './user_sign_in.css'
 })
-export class SigIn
+export class User_Sign_In
 { 
   switchSign : boolean = false ;
   form = inject(FormBuilder);

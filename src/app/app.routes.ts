@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { SigIn } from './sign-in/sign-in';
+import { User_Sign_In } from './user_sign-in/user_sign_in';
 import { AddBook } from './add-book/add-book';
 import { UpdateBook } from './update-book/update-book';
 import { DeleteBook } from './delete-book/delete-book';
@@ -13,9 +13,9 @@ import { guestGuard } from './guest-guard';
 import { ForgotPassword } from './forgot-password/forgot-password';
 import { ResetPassword } from './reset-password/reset-password';
 
-export const routes: Routes = [
-    { path : '' , redirectTo : 'sign-in' , pathMatch : 'full' },
-    { path : 'sign-in' , component : SigIn, canActivate: [guestGuard] },
+export const routes: Routes = [ 
+    { path : '' , redirectTo : 'user_sign_in' , pathMatch : 'full' },
+    { path : 'user_sign_in' , component : User_Sign_In, canActivate: [guestGuard] },
     { path : 'forgot-password' , component : ForgotPassword },
     { path : 'reset-password' , component : ResetPassword },
     { path : 'add-book' , component : AddBook, canActivate: [authGuard] },

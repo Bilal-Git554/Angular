@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { AddBook } from './add-book/add-book';
 import { DeleteBook } from './delete-book/delete-book';
 import { UpdateBook } from './update-book/update-book';
-import { SigIn } from './sign-in/sign-in';
+import { User_Sign_In } from './user_sign-in/user_sign_in';
 import { SearchBook } from './search-book/search-book';
 import { StockAvail } from './stock-avail/stock-avail';
 import { Buttons } from './buttons/buttons';
@@ -18,7 +18,7 @@ import { Service } from './Services/service';
             AddBook,
             DeleteBook,
             UpdateBook,
-            SigIn,
+            User_Sign_In,
             SearchBook,
             StockAvail,
             FormsModule,
