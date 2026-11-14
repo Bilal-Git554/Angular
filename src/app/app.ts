@@ -3,13 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { AddBook } from './add-book/add-book';
 import { DeleteBook } from './delete-book/delete-book';
 import { UpdateBook } from './update-book/update-book';
-import { User_Sign_In } from './user_sign-in/user_sign_in';
+import { User_Sign_In } from './user_sign_in/user_sign_in';
 import { SearchBook } from './search-book/search-book';
 import { StockAvail } from './stock-avail/stock-avail';
 import { Buttons } from './buttons/buttons';
 import { FormsModule } from '@angular/forms';
 import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
+import { Admin_Sign_In } from './admin_sign_in/admin_sign_in';
 import { Service } from './Services/service';
 
 @Component({
@@ -24,7 +25,8 @@ import { Service } from './Services/service';
             FormsModule,
             Buttons,
             InvalidComponent,
-            ViewAllBook
+            ViewAllBook,
+            Admin_Sign_In
           ],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -36,13 +38,14 @@ export class App
   service = inject(Service);
  
  routes = [
-  { name: '↪LOG OUT', path: '/log-out' },
+  { name: '🧑🏻‍💼👩🏻‍💼 ADD NEW ADMIN', path: '/admin_sign_in'},
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },
   { name: '🗑 DELETE BOOK', path: '/delete-book' },
   { name: '🔍 SEARCH BOOK', path: '/search-book'},
   { name: '📚 VIEW ALL BOOKS' , path: '/view-all-book'},
-  { name: '📦 STOCK AVAILABILITY', path: '/stock-avail'}
+  { name: '📦 STOCK AVAILABILITY', path: '/stock-avail'},
+  { name: '↪LOG OUT', path: '/log-out' }
  ]
 //Bilal
 }

@@ -1,5 +1,5 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock, Forgot, Send_Password_Token } from '../../Model';
+import { Add_Book_Details, Book_Details, Jwt_Response, User_Credentials, Whole_Stock, Forgot, Send_Password_Token, Admin } from '../../Model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -57,7 +57,7 @@ addBook(new_Book: Add_Book_Details)
   if(!token)
   {
     alert("Can't Find The Token!");
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/user_sign_in']);
   }
   return this.http.post<Add_Book_Details>(this.apiUrl,new_Book,
     {
@@ -85,7 +85,7 @@ deleteBookby_Id(delete_book : number)
     if(!token)
     {
       alert("Can't Find The Token!");
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['/user_sign_in']);
     }
     return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{},
       {
@@ -105,7 +105,7 @@ deleteBookby_Id(delete_book : number)
     if(!token)
     {
       alert("Can't Find The Token!");
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['/user_sign_in']);
     }
     return this.http.put(`${this.apiUrl}/${update_book.book_Id}`,update_book,
       {
@@ -169,7 +169,7 @@ logOut()
 {
   localStorage.removeItem('Token');
   this._checkLogIn.set(false);
-  this.router.navigate(['sign-in']);
+  this.router.navigate(['user_sign_in']);
   alert("Logged Out Successfully!✅");
 }
 //For Log Out
@@ -196,16 +196,36 @@ reset_User(reset_password : Send_Password_Token)
   this.http.post(this.resetUrl,reset_password,{responseType: 'text'}).subscribe({
     next : (data) =>
       {
-        console.log(data);
         alert("Password Reseted Successfully!✅");
       },
       error : (err) =>
-        {
-          console.log(err.error);
-          alert("Password Reset Unsuccessful! Or Session Expired!❌");
-        }   
+      {
+        alert("Password Reset Unsuccessful! Or Session Expired!❌");
+      }   
   })
 }
 //For Reset Password
 //====================================================================================================================
+
+admin_Sign_Up(Admin_Credentials : Admin)
+{
+  const token = localStorage.getItem('Token');
+    if(!token)
+    {
+      alert("Can't Find The Token!");
+      this.router.navigate(['/user_sign_in']);
+      return;
+    }
+
+   return this.http.post<Admin>(this.admin_sign_in_Url,Admin_Credentials,
+   {
+    headers :
+    {
+      Authorization : `Bearer ${token}`
+    }
+   });
+}
+//For New Admin Sign Up
+//====================================================================================================================
+
 }

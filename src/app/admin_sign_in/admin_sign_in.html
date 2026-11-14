@@ -1,0 +1,62 @@
+<div [formGroup]="New_Admin_Sign_Up">
+
+
+<div class="text-white text-center border border-white rounded-lg">
+
+<div>
+  <h1 class="text-white text-2xl m-5">🧑🏻‍💼👩🏻‍💼 ADD NEW ADMIN</h1>
+</div>
+
+
+<div class="mt-5">
+   <label for="admin_Email">Enter Admin's Email :</label>
+   <input type="email" class="rounded-md w-90 border border-white p-3 mt-7 ml-8 mb-5 bg-gray-800 text-white" formControlName="admin_Email">
+   @let admin_email = New_Admin_Sign_Up.controls.admin_Email;
+   @if(admin_email.errors && admin_email.dirty)
+   {
+     @if(admin_email.errors['email'])
+     {
+        <p class="text-red-500">Enter A Valid Email Address!</p>
+     }
+     
+     @if(admin_email.errors['required'])
+     {
+        <p class="text-red-500">This Field Is Mandatory!</p>
+     }
+   }
+
+</div>
+
+
+<div class="mt-5">
+   <label for="admin_Password">Enter Password :</label>
+   <input type="password" class="rounded-md w-90 border border-white p-3 mt-7 ml-7 mb-5 bg-gray-800 text-white" formControlName="admin_Password">
+   @let admin_password = New_Admin_Sign_Up.controls.admin_Password;
+   @if(admin_password.errors && admin_password.dirty)
+   {
+     @if(admin_password.errors['required'])
+     {
+        <p class="text-red-500">This Field Is Mandatory!</p>
+     }
+
+     @if(admin_password.errors['pattern'])
+     {
+        <p class="text-red-500">The Password Must Contain :</p>
+        <ul class="text-red-500">
+          <li>Must Contain Atleast 1 UpperCase</li>
+          <li>Must Contain Atleast 1 LowerCase</li>
+          <li>Must Contain Atleast 1 Number</li>
+          <li>Must Contain Atleast 1 Special Characters</li>
+        </ul>
+     }
+   }
+</div>
+
+
+<div>
+<button [class]="New_Admin_Sign_Up.invalid ? 'bg-red-500 p-3 rounded-md hover:scale-105' : 'bg-blue-500 p-3 rounded-md hover:scale-105' " 
+[disabled]="New_Admin_Sign_Up.invalid" (click) = "submit()">ADD ADMIN</button>
+<button class="bg-red-500 p-3 mt-5 ml-10 mb-5 rounded-md hover:scale-105" (click)="cancel()">CANCEL</button>
+</div>
+
+</div>

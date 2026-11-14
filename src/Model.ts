@@ -61,3 +61,9 @@ export interface Send_Password_Token
   token : string,
   new_Password : string
 }
+
+export interface Admin
+{
+  admin_Email : string,
+  admin_Password : string
+}
