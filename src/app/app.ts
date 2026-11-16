@@ -12,6 +12,7 @@ import { InvalidComponent } from './invalid-component/invalid-component';
 import { ViewAllBook } from './view-all-book/view-all-book';
 import { Admin_Sign_In } from './admin_sign_in/admin_sign_in';
 import { Service } from './Services/service';
+import { Profile } from './profile/profile';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ import { Service } from './Services/service';
             Buttons,
             InvalidComponent,
             ViewAllBook,
-            Admin_Sign_In
+            Admin_Sign_In,
+            Profile
           ],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -38,6 +40,7 @@ export class App
   service = inject(Service);
  
  routes = [
+  { name: '🪪ACCOUNT', path: '/profile' },
   { name: '🧑🏻‍💼👩🏻‍💼 ADD NEW ADMIN', path: '/admin_sign_in'},
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },

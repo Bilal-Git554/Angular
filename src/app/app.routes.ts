@@ -13,6 +13,7 @@ import { guestGuard } from './guest-guard';
 import { ForgotPassword } from './forgot-password/forgot-password';
 import { ResetPassword } from './reset-password/reset-password';
 import { Admin_Sign_In } from './admin_sign_in/admin_sign_in';
+import { Profile } from './profile/profile';
 
 export const routes: Routes = [ 
     { path : '' , redirectTo : 'user_sign_in' , pathMatch : 'full' },
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path : 'forgot-password' , component : ForgotPassword },
     { path : 'reset-password' , component : ResetPassword },
     { path : 'admin_sign_in' , component : Admin_Sign_In, canActivate: [authGuard] },
+    { path : 'profile' , component : Profile, canActivate: [authGuard] },
     { path : 'add-book' , component : AddBook, canActivate: [authGuard] },
     { path : 'log-out' , component : LogOut, canActivate: [authGuard] },
     { path : 'update-book' , component : UpdateBook, canActivate: [authGuard]  },

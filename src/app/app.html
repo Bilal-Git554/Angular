@@ -1,4 +1,4 @@
-<div class="fixed top-0 w-full bg-slate-900 text-white flex justify-between items-center p-2 shadow-slate-900 shadow">
+<div class="fixed top-0 w-full bg-gray-800 text-white flex justify-between items-center p-2 shadow-slate-900 shadow">
 
     <h1 class="text-2xl italic">
         ATHENAEUM's LIBRARY MANAGEMENT SYSTEM.,
@@ -13,7 +13,7 @@
 
   @if(service.checkLogIn())
  {
-    <aside class="basis-64 bg-slate-900 text-white sticky top-16 h-[calc(100vh-4rem)] p-4 overflow-y-auto shrink-0">
+    <aside class="basis-75 bg-gray-800 text-white sticky top-16 h-[calc(100vh-4rem)] p-4 overflow-y-auto shrink-0">
         <h2 class="italic text-lg mb-6 ml-6">
             BOOK DASHBOARD
         </h2>
@@ -29,16 +29,17 @@
 
     <main class="flex-1 p-8">
 
-        <h1 class="text-3xl text-white italic text-center gap-2 bg-slate-700 rounded-md  p-3">
+        <h1 class="text-3xl bg-gray-800 text-white italic text-center gap-2 rounded-md  p-3">
             Welcome To Athenaeum's Library Management System <br>
             Read Books To Gain Your Knowledge🧠
         </h1>
 
-        <div class="bg-slate-700 p-6 rounded-md mt-3">
+        <div class="bg-gray-800 p-6 rounded-md mt-3">
            <div>
                 <router-outlet></router-outlet>
             </div>
         </div>
+        
     </main>
 
 </div>
