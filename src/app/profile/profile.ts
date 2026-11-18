@@ -39,4 +39,9 @@ export class Profile implements OnInit
   {
     this.router.navigate(['/add-book']);
   }
+
+  logout()
+  {
+    this.router.navigate(['/log-out']);
+  }
 }

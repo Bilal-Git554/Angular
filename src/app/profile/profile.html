@@ -5,7 +5,7 @@
     </div>
 
 
-  <div class="mt-10 font-bold">
+  <div class="mt-10 mr-12 font-bold">
     <span>EMAIL ADDRESS : </span>
     <span class="text-lg ml-2" [ngClass] = "Role === 'Admin' ? 'bg-amber-400/20  text-amber-300 rounded-md p-2' : 'bg-sky-400/20	text-sky-300 rounded-md p-2' ">{{Email}}</span>
   </div>
@@ -16,12 +16,13 @@
     <span class="text-lg ml-2" [ngClass] = "Role === 'Admin' ? 'bg-amber-400/20  text-amber-300 rounded-md p-2' : 'bg-sky-400/20	text-sky-300 rounded-md p-2' ">{{Role === 'Admin' ? '👑Admin' : '🔷User'}}</span>
   </div>
 
-  <div class="mt-10 mr-30 font-bold">
+  <div class="mt-10 mr-33 font-bold">
     <span>ACCOUNT STATUS : </span>
     <span class="text-lg ml-2" [ngClass] = "Role === 'Admin' ? 'bg-green-400/20  text-green-300 rounded-md p-2' : 'bg-green-400/20	text-green-300 rounded-md p-2' ">● {{Status}}</span>
   </div>
 
 
     <button class="bg-blue-500 p-3 mt-10 mr-3 mb-5 text-white rounded-md hover:scale-105" (click)="back()">BACK</button>
+    <button class="bg-red-500 p-3 mt-10 mr-3 ml-5 mb-5 text-white rounded-md hover:scale-105" (click)="logout()">LOGOUT</button>
 
 </div>

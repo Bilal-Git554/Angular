@@ -19,6 +19,8 @@ export class Admin_Sign_In
   router = inject(Router);
   service = inject(Service);
 
+  show_Password = false;
+
   New_Admin_Sign_Up = new FormGroup({
     admin_Email : new FormControl('',[Validators.email,Validators.required]),
     admin_Password : new FormControl('',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/)])
@@ -53,6 +55,10 @@ export class Admin_Sign_In
   {
     this.router.navigate(['add-book']);
   }
-
+  
+  toggle_Password()
+  {
+    this.show_Password = !this.show_Password;
+  }
 }
 
