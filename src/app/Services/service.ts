@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class Service 
 {
   private http = inject(HttpClient);
-  private apiUrl = 'https://localhost:7250/api/Books';
+  private bookUrl = 'https://localhost:7250/api/Books';
   private stockUrl = 'https://localhost:7250/api/Stock';
   private loginUrl = 'https://localhost:7250/api/User_Credentials_/login';
   private user_sign_in_Url = 'https://localhost:7250/api/User_Credentials_/user';
@@ -34,7 +34,7 @@ export class Service
 
   getBooks()
   {
-    return this.http.get<Book_Details[]>(this.apiUrl).subscribe(
+    return this.http.get<Book_Details[]>(this.bookUrl).subscribe(
       {
         next : (data) =>
         {
@@ -59,7 +59,7 @@ addBook(new_Book: Add_Book_Details)
     alert("Can't Find The Token!");
     this.router.navigate(['/user_sign_in']);
   }
-  return this.http.post<Add_Book_Details>(this.apiUrl,new_Book,
+  return this.http.post<Add_Book_Details>(this.bookUrl,new_Book,
     {
       headers: 
       {
@@ -73,7 +73,7 @@ addBook(new_Book: Add_Book_Details)
 
   getBookby_Id(find_Book : number)
   {
-   return this.http.post<Book_Details>(`${this.apiUrl}/read/${find_Book}`,{});
+   return this.http.post<Book_Details>(`${this.bookUrl}/read/${find_Book}`,{});
   }
 
 //Getting The Book By The Id...  
@@ -87,7 +87,7 @@ deleteBookby_Id(delete_book : number)
       alert("Can't Find The Token!");
       this.router.navigate(['/user_sign_in']);
     }
-    return this.http.post(`${this.apiUrl}/delete/${delete_book}`,{},
+    return this.http.post(`${this.bookUrl}/delete/${delete_book}`,{},
       {
         headers:
         {
@@ -107,7 +107,7 @@ deleteBookby_Id(delete_book : number)
       alert("Can't Find The Token!");
       this.router.navigate(['/user_sign_in']);
     }
-    return this.http.put(`${this.apiUrl}/${update_book.book_Id}`,update_book,
+    return this.http.put(`${this.bookUrl}/${update_book.book_Id}`,update_book,
       {
         headers:
         {
