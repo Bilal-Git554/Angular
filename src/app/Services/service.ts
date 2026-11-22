@@ -20,8 +20,8 @@ export class Service
   private _stockApi = signal<Whole_Stock | null> (null);
   readonly stockApi = this._stockApi.asReadonly();
 
-  private _testingApi = signal<Book_Details[]> ([]);
-  readonly testingApi = this._testingApi.asReadonly();
+  private _bookApi = signal<Book_Details[]> ([]);
+  readonly bookApi = this._bookApi.asReadonly();
   //Backend Link And Storing All Books In The Signal...And Stock Report In The Signal...
   
   private _checkLogIn = signal(localStorage.getItem('Token') !== null);
@@ -38,7 +38,7 @@ export class Service
       {
         next : (data) =>
         {
-          this._testingApi.set(data);
+          this._bookApi.set(data);
         },
         error : (err) =>
         {
