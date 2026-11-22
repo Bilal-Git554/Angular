@@ -25,10 +25,23 @@
     }
   </div>
 
-  <div>
+  <div class="mt-5">
+
     <label for="Password">Enter Your Password :</label>
-    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 mb-5 bg-gray-800 text-white"  formControlName = "user_Password">
-    
+    <div class="relative inline-block mt-7 ml-7 mb-5">
+     <input 
+       [type]="show_Password ? 'text' : 'password'" 
+       class="rounded-md w-90 border border-white p-3 pr-16 bg-gray-800 text-white" 
+       formControlName="user_Password">
+     
+     <button 
+       type="button" 
+       (click)="toggle_Password()" 
+       class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-300 hover:text-white cursor-pointer">
+       {{ show_Password ? 'HIDE' : 'SHOW' }}
+     </button>
+    </div>    
+
     @let new_user_password = Sign_In_Up.controls.user_Password;
     @if(new_user_password.errors && new_user_password.dirty)
     {
@@ -87,10 +100,23 @@
   
   </div>
 
-  <div>
+  <div class="mt-5">
+
     <label for="Password">Enter Your Password :</label>
-    <input type="password"  class="rounded-md w-90 border border-white p-3 mt-7 ml-7 mb-5 bg-gray-800 text-white" formControlName = "user_Password">
-    
+    <div class="relative inline-block mt-7 ml-7 mb-5">
+     <input 
+       [type]="show_Password ? 'text' : 'password'" 
+       class="rounded-md w-90 border border-white p-3 pr-16 bg-gray-800 text-white" 
+       formControlName="user_Password">
+     
+     <button 
+       type="button" 
+       (click)="toggle_Password()" 
+       class="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-300 hover:text-white cursor-pointer">
+       {{ show_Password ? 'HIDE' : 'SHOW' }}
+     </button>
+   </div>
+
     @let already_user_password = Sign_In_Up.controls.user_Password;
     @if(already_user_password.errors && already_user_password.dirty)
     {

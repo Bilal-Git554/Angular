@@ -15,6 +15,8 @@ export class ResetPassword
    routerLink = inject (ActivatedRoute);
    router = inject (Router);
    service = inject (Service);
+   show_Password = false;
+   show_Confirm_Password = false;
 
   token = this.routerLink.snapshot.queryParamMap.get('token');
 
@@ -37,12 +39,12 @@ export class ResetPassword
     };
     
     this.service.reset_User(token_password as Send_Password_Token);
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/user_sign_in']);
     this.reset.resetForm();
   }
 
   cancel()
   {
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/user_sign_in']);
   }
 }

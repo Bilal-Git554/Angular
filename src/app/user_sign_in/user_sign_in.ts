@@ -16,11 +16,22 @@ export class User_Sign_In
   form = inject(FormBuilder);
   service = inject(Service);
   router = inject(Router);
+  show_Password = false;
+
 
   Sign_In_Up = this.form.group({
     user_Email : this.form.control('',[Validators.email,Validators.required]),
     user_Password : this.form.control('',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$/)])
   })
+
+
+
+  Already_User()
+  {
+    this.switchSign = true ;
+    this.Sign_In_Up.reset();
+  }
+
 
   Already_User_Submit()
   {
@@ -28,12 +39,15 @@ export class User_Sign_In
     this.service.alreadyUser(this.Sign_In_Up.value as User_Credentials);
     this.Sign_In_Up.reset();
   }
+
+
+
+
   New_User()
   {
     this.switchSign = false ;
     this.Sign_In_Up.reset();
   }
-
 
   New_User_Submit()
   {
@@ -50,15 +64,17 @@ export class User_Sign_In
       });
     this.Sign_In_Up.reset();
   }
-    Already_User()
-  {
-    this.switchSign = true ;
-    this.Sign_In_Up.reset();
-  }
+
   
   forgot_password()
   {
     alert("Redirecting To Forgot Password Page!🤷");
     this.router.navigate(['/forgot-password']);
   }
+
+  toggle_Password()
+  {
+    this.show_Password = !this.show_Password;
+  }
+
 }

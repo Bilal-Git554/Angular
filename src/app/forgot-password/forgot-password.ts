@@ -26,12 +26,12 @@ export class ForgotPassword
     this.service.forgot_User(email as Forgot);
     alert("✅Password Reset Link Will Be Send To The Entered Email!" + "\n" + 
       "Note : It May Take Few Minutes To Send The Link. Try To Reset Your Password Within 30 Minutes.");
-    this.router.navigate(['sign-in']);
+    this.router.navigate(['/user_sign_in']);
     this.User_Recovery.reset();
   }
 
   cancel()
   {
-    this.router.navigate(['sign-in']);
+    this.router.navigate(['/user_sign_in']);
   }
 }
