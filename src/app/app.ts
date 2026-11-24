@@ -40,7 +40,7 @@ export class App
   service = inject(Service);
  
  routes = [
-  { name: '🪪ACCOUNT', path: '/profile' },
+  { name: 'WHO I AM ❓', path: '/profile' },
   { name: '🧑🏻‍💼👩🏻‍💼 ADD NEW ADMIN', path: '/admin_sign_in'},
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },

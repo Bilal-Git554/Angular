@@ -2,7 +2,7 @@
     <div>
         <h1 class="text-center text-white text-2xl ">📚 AVAILABLE BOOKS</h1>
     </div>
-     @if(service.testingApi().length > 0)
+     @if(service.bookApi().length > 0)
     {
      <table class="text-white w-full text-center mt-5">
         <thead>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-              @for (book of service.testingApi(); track $index)
+              @for (book of service.bookApi(); track $index)
               { 
                <tr class="hover:bg-slate-800">
                     <td class="border border-slate-600 p-3">{{book.book_Id}}</td>

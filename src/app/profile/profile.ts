@@ -6,7 +6,6 @@ import { NgClass } from '@angular/common';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-profile',
   imports: [NgClass],
@@ -20,7 +19,7 @@ export class Profile implements OnInit
 
   Email = '';
   Role = '';
-  Status = '';
+  Status = 'InActive';
 
   ngOnInit()
   {
