@@ -1,1 +1,13 @@
 @import "tailwindcss";
+::-webkit-scrollbar {
+  display: none;
+}
+
+.dark-theme {
+  background-color: #111827 !important;
+}
+
+.light-theme {
+  background-color: white !important;
+}
+

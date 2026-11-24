@@ -13,6 +13,7 @@ import { ViewAllBook } from './view-all-book/view-all-book';
 import { Admin_Sign_In } from './admin_sign_in/admin_sign_in';
 import { Service } from './Services/service';
 import { Profile } from './profile/profile';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,7 @@ import { Profile } from './profile/profile';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App
+export class App implements OnInit
 {
   title = "Megaruf Bilal K"; 
  
@@ -50,5 +51,20 @@ export class App
   { name: '📦 STOCK AVAILABILITY', path: '/stock-avail'},
   { name: '↪LOG OUT', path: '/log-out' }
  ]
+
+
+ngOnInit() {
+    this.toggleDarkMode();
+  }
+
+  toggleDarkMode() {
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
+  }
+
+  toggleLightMode() {
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add('light-theme');
+  }
 //Bilal
 }
