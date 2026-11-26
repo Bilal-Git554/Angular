@@ -41,7 +41,7 @@ export class App implements OnInit
   service = inject(Service);
  
  routes = [
-  { name: 'WHO I AM ❓', path: '/profile' },
+  { name: 'WHO AM I ❓', path: '/profile' },
   { name: '🧑🏻‍💼👩🏻‍💼 ADD NEW ADMIN', path: '/admin_sign_in'},
   { name: '➕ ADD BOOK', path: '/add-book' },
   { name: '✏ UPDATE BOOK', path: '/update-book' },
